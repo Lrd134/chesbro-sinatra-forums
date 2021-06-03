@@ -7,5 +7,8 @@ class UserController < ApplicationController
   get '/login' do
     erb :'/users/index'
   end
-
+  post '/users' do
+    @user = User.create(params[:user])
+    binding.pry
+  end
 end
