@@ -1,7 +1,11 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    erb :'users/new'
+    @users = User.all
+    erb :'/users/new'
   end
-  
+  get '/login' do
+    erb :'/users/index'
+  end
+
 end
