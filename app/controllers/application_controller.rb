@@ -1,6 +1,7 @@
 class ApplicationController < Sinatra::Base
   set :views, proc { File.join(root, '../views/') }
-  get '/index' do
+  
+  get '/' do
     erb :index
   end
 
