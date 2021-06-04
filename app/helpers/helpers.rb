@@ -2,10 +2,7 @@ class Helpers < ApplicationController
 
 
   def self.has_session_same_as_login?(session_id:, user_id:)
-    session_id == user_id ? true : false
-  end
-  def self.logout
-    session.clear
+    session_id == user_id.to_i ? true : false
   end
   def self.authenticate(username:, password:)
     @user = User.find_by_username(username)

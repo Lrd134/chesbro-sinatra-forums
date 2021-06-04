@@ -8,7 +8,7 @@ class UserController < ApplicationController
     erb :'/users/login'
   end
   get '/logout' do
-    Helpers.logout
+    session.clear
     redirect :'/'
   end
   get '/users' do
@@ -82,7 +82,6 @@ class UserController < ApplicationController
     end
 
     user.update(params[:user])
-
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
