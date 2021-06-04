@@ -1,8 +1,12 @@
 <% @posts.each do | post | %>
   <table>
     <tr>
-      <th>Post:</th>
-      <td><%=post.title%></td>
+      <th>Post Title:</th>
+      <td><a href="/posts/<%=post.id%>"><%=post.title%><a></td>
+    </tr>
+    <tr>
+      <th>Post Summary:</th>
+      <td><%#post.content.trimmed%></td>
     </tr>
   <table>
 <% end %>
