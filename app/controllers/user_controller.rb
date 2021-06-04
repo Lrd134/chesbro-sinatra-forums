@@ -9,6 +9,8 @@ class UserController < ApplicationController
   end
   post '/users' do
     @user = User.create(params[:user])
-    binding.pry
+    session[:user_id] = @user.id
+    redirect :"/users/#{@user.id}"
+
   end
 end
