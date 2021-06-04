@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
       return nil
     end
   end
+  def self.exists?(username)
+    if User.find_by_username(username)
+      return true
+    else 
+      return false
+    end
+  end
 end
