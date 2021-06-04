@@ -23,9 +23,3 @@ class Helpers
   end
 end
 
-get '/posts/new' do
-  erb :'/posts/new'
-end
-get '/posts/:id/edit' do
-
-end

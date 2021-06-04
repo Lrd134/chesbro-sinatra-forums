@@ -11,5 +11,10 @@ class ApplicationController < Sinatra::Base
     @failure_reason = params[:failure_params].split("_").map {|r| r.capitalize}.join(" ")
     erb :failure
   end
-
+  get '/posts/new' do
+    erb :'/posts/new'
+  end
+  get '/posts/:id/edit' do
+    erb :'/posts/edit'
+  end
 end
