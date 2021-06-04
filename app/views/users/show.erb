@@ -1,3 +1,8 @@
 <h1><%=@user.username.capitalize%>'s Homepage</h1>
 <p> This is the user! </p>
 <p><em>Username:</em> <%=@user.username%></p>
+
+<form action="/delete" method="POST">
+<input type="hidden" value="<%=@user.id%>" name="user[id]"/>
+<input type="submit" value="Delete <%=@user.username%>"/>
+</form>
