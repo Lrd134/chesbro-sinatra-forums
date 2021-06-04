@@ -8,9 +8,21 @@ class UserController < ApplicationController
     erb :'/users/index'
   end
   post '/users' do
-    @user = User.create(params[:user])
-    session[:user_id] = @user.id
-    redirect :"/users/#{@user.id}"
-
+    unless params[:user][:username].empty?
+      unless params[:user][:password].empty?
+        @user = User.create(params[:user])
+        if @user
+          session[:user_id] = @user.id
+          redirect :"/users/#{@user.id}"
+        else
+          failure = "server_error"
+          redirect :"/failure/#{failure}"
+        end
+      end
+      failure = "invalid_password_given"
+      redirect :"/failure/#{failure}"
+    end
+    failure = "invalid_username_given"
+    redirect :"/failure/#{failure}"
   end
 end
