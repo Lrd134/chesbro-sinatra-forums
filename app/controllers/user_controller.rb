@@ -7,6 +7,12 @@ class UserController < ApplicationController
   get '/login' do
     erb :'/users/index'
   end
+  get '/users/:id' do
+    unless User.find(session[:user_id]).nil?
+      erb :'users/show'
+    end
+    redirect :'/failure/user_not_found'
+  end
   post '/users' do
     unless params[:user][:username].empty?
       unless params[:user][:password].empty?
