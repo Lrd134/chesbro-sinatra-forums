@@ -13,22 +13,24 @@ class UserController < ApplicationController
   end
   get '/users/:id' do
     if session[:user_id]
-
-      unless User.find(session[:user_id]).nil?
-        erb :'users/show'
+      @user = User.find(session[:user_id])
+      if !@user
+        redirect :'/failure/user_not_found'
       end
-      redirect :'/failure/user_not_found'
     else
       redirect :'/failure/please_login'
     end
+      unless @user.nil?
+        erb :'/users/show'
+      end
+    
+
   end
   post '/users' do
     unless params[:user][:username].empty?
-      params[:user][:username].upcase!
       unless params[:user][:password].empty?
         @user = User.create(params[:user])
         if @user
-          binding.pry
           session[:user_id] = @user.id
           redirect :"/users/#{@user.id}"
         else
@@ -44,7 +46,12 @@ class UserController < ApplicationController
   end
   post '/login' do
     @user = User.authenticate(username: params[:username], password: params[:password])
-    binding.pry
-
+    if @user
+      session[:user_id] = @user.id
+      redirect :"/users/#{@user.id}"
+    else
+      redirect :"/failure/user_not_found"
+    end
   end
+
 end
