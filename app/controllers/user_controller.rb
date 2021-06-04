@@ -63,7 +63,7 @@ class UserController < ApplicationController
     if params[:user][:username].empty?
       params[:user][:username] = user.username
     end
-    if !params[:user][:password].empty?
+    if !params[:password].empty?
       
       user.password = params[:password]
     end
