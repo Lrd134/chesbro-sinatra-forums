@@ -5,11 +5,15 @@ class UserController < ApplicationController
     erb :'/users/new'
   end
   get '/login' do
-    erb :'/users/index'
+    erb :'/users/login'
   end
   get '/logout' do
     session.clear
     redirect :'/'
+  end
+  get '/users' do
+    @users = User.all
+    erb :'/users/index'
   end
   get '/delete' do
     @user = User.find(params[:user][:id])

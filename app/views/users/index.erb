@@ -1,7 +1,12 @@
-<h3> Please Login </h3>
-
-<form action="/login" method="POST">
-<input type="text" name="username" placeholder="Username"/>
-<input type="password" name="password" placeholder="Password"/>
-<input type="submit" value="Login"/>
-</form>
+<%@users.each do | user |%>
+  <table>
+    <tr>
+      <th>Username:</th>
+      <td><%=user.username%></td>
+    </tr>
+    <tr>
+      <th>Posts:</th>
+      <td><%=user.posts.count%></td>
+    </tr>
+  </table>
+<%end%>
