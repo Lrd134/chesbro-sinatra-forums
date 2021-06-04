@@ -8,7 +8,7 @@ class UserController < ApplicationController
     erb :'/users/login'
   end
   get '/logout' do
-    session.clear
+    Helpers.logout
     redirect :'/'
   end
   get '/users' do
@@ -20,20 +20,11 @@ class UserController < ApplicationController
     erb :'users/delete'
   end
   get '/users/:id' do
-    if session[:user_id]
-      @user = User.find(session[:user_id])
+    if Helpers.has_session?(params[:id])
+      @user = User.find(params[:id])
       
-      if !@user
-        redirect :'/failure/user_not_found'
-      end
-
-    else
-      redirect :'/failure/please_login'
     end
-
-    unless @user.nil?
       erb :'/users/show'
-    end
     
 
   end
