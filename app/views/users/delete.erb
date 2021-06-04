@@ -2,7 +2,7 @@
 
 <h4>You would like to delete <%=@user.username%></h4>
 
-<form action="/delete/<%=@user.id%>" method="POST">
+<form action="/users/delete/<%=@user.id%>" method="POST">
 <input type="hidden" value="DELETE" name="_method"/>
 <input type="submit" value="Delete <%=@user.username%>"/>
 </form>

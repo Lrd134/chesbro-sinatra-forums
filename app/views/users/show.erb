@@ -3,6 +3,7 @@
 <p><em>Username:</em> <%=@user.username%></p>
 
 <form action="/delete" method="POST">
+<input type="hidden" value="GET" name="_method"/>
 <input type="hidden" value="<%=@user.id%>" name="user[id]"/>
 <input type="submit" value="Delete <%=@user.username%>"/>
 </form>

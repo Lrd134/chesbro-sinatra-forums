@@ -12,7 +12,7 @@ class UserController < ApplicationController
     redirect :'/'
   end
   get '/delete' do
-    @user = User.find(params[user][id])
+    @user = User.find(params[:user][:id])
     erb :'users/delete'
   end
   get '/users/:id' do
@@ -87,7 +87,7 @@ class UserController < ApplicationController
 
     redirect :"users/#{user.id}"
   end
-  delete '/users/:id' do
+  delete '/users/delete/:id' do
     if session[:user_id] == params[:id] && params[:bool] == "yes"
       user = User.find(params[:id])
       user.destroy
