@@ -41,6 +41,8 @@ class UserController < ApplicationController
     redirect :"/failure/#{failure}"
   end
   post '/login' do
-    
+    @user = User.authenticate(username: params[:username], password: params[:password])
+    binding.pry
+
   end
 end
