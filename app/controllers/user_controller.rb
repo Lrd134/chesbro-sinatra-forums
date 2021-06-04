@@ -24,9 +24,11 @@ class UserController < ApplicationController
   end
   post '/users' do
     unless params[:user][:username].empty?
+      params[:user][:username].upcase!
       unless params[:user][:password].empty?
         @user = User.create(params[:user])
         if @user
+          binding.pry
           session[:user_id] = @user.id
           redirect :"/users/#{@user.id}"
         else
