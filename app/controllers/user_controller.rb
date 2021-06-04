@@ -53,5 +53,8 @@ class UserController < ApplicationController
       redirect :"/failure/user_not_found"
     end
   end
+  patch '/users/:id' do
 
+    redirect :"users/#{user.id}"
+  end
 end
