@@ -26,6 +26,10 @@ class UserController < ApplicationController
     
 
   end
+  get '/users/:id/edit' do
+    @user = User.find(params[:id])
+    erb :'/users/edit'
+  end
   post '/users' do
     unless params[:user][:username].empty?
       unless params[:user][:password].empty?

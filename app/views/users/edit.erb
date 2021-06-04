@@ -1,4 +1,4 @@
-<form action="/users/<%=@user.id%>/edit" method="POST">
+<form action="/users/<%=@user.id%>" method="POST">
 <input type="hidden" value="PATCH" name="_method"/>
 <input type="text" name="user[username]" placeholder="Username" />
 <input type="password" name="user[password]" placeholder="Password"/>
