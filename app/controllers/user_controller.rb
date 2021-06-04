@@ -7,11 +7,20 @@ class UserController < ApplicationController
   get '/login' do
     erb :'/users/index'
   end
+  get '/logout' do
+    session.clear
+    redirect :'/'
+  end
   get '/users/:id' do
-    unless User.find(session[:user_id]).nil?
-      erb :'users/show'
+    if session[:user_id]
+
+      unless User.find(session[:user_id]).nil?
+        erb :'users/show'
+      end
+      redirect :'/failure/user_not_found'
+    else
+      redirect :'/failure/please_login'
     end
-    redirect :'/failure/user_not_found'
   end
   post '/users' do
     unless params[:user][:username].empty?
@@ -30,5 +39,8 @@ class UserController < ApplicationController
     end
     failure = "invalid_username_given"
     redirect :"/failure/#{failure}"
+  end
+  post '/login' do
+    
   end
 end

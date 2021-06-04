@@ -11,7 +11,5 @@ class ApplicationController < Sinatra::Base
     @failure_reason = params[:failure_params].split("_").map {|r| r.capitalize}.join(" ")
     erb :failure
   end
-  get '/logout' do
 
-  end
 end
