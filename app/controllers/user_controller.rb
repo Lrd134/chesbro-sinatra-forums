@@ -88,10 +88,10 @@ class UserController < ApplicationController
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
-    if session[:user_id] == params[:id] && params[:bool] == "yes"
+    if session[:user_id] == params[:id].to_i && params[:bool].include?("yes")
       user = User.find(params[:id])
       user.destroy
-      redirect :'/users'
+      redirect :'/logout'
     elsif params[:bool] == "no"
       redirect :'/failure/you_choose_the_non_violence_path_today'
     else

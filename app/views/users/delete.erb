@@ -4,5 +4,7 @@
 
 <form action="/users/delete/<%=@user.id%>" method="POST">
 <input type="hidden" value="DELETE" name="_method"/>
+<label for="bool">Please Enter "yes" to delete <%=@user.username%></label>
+<input type="text" placeholder="Yes" id="bool" name="bool"/>
 <input type="submit" value="Delete <%=@user.username%>"/>
 </form>
