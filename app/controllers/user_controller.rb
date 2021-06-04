@@ -14,21 +14,28 @@ class UserController < ApplicationController
   get '/users/:id' do
     if session[:user_id]
       @user = User.find(session[:user_id])
+      
       if !@user
         redirect :'/failure/user_not_found'
       end
+
     else
       redirect :'/failure/please_login'
     end
-      unless @user.nil?
-        erb :'/users/show'
-      end
+
+    unless @user.nil?
+      erb :'/users/show'
+    end
     
 
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    erb :'/users/edit'
+    if session[:user_id] == @user.id
+      erb :'/users/edit'
+    else
+      erb :'/failure/please_login'
+    end
   end
   post '/users' do
     unless params[:user][:username].empty?
