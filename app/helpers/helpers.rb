@@ -1,8 +1,8 @@
-class Helpers
+class Helpers < ApplicationController
 
 
-  def self.has_session?(user_id)
-    session[:user_id] == user_id ? true : false
+  def self.has_session_same_as_login?(session_id:, user_id:)
+    session_id == user_id ? true : false
   end
   def self.logout
     session.clear
@@ -12,7 +12,7 @@ class Helpers
     @user && @user.authenticate(password) ? @user : nil
   end
   def self.authenticate_id(user)
-    has_session? && (session[:user_id] == user.id) ? true : false
+    has_session_same_as_login? && (session[:user_id] == user.id) ? true : false
   end
   def self.exists?(username)
     User.find_by_username(username) ? true : false

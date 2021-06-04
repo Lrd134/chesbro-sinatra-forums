@@ -20,24 +20,25 @@ class UserController < ApplicationController
     erb :'users/delete'
   end
   get '/users/:id' do
-    if Helpers.has_session?(params[:id])
+    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id])
+      @logged_in = true
+    end
       @user = User.find(params[:id])
       
-    end
       erb :'/users/show'
     
 
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    if session[:user_id] == @user.id
+    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: @user.id)
       erb :'/users/edit'
     else
       erb :'/failure/please_login'
     end
   end
   post '/users' do
-    if User.exists?(params[:user][:username])
+    if Helpers.exists?(params[:user][:username])
       redirect :"/failure/user_#{params[:user][:username]}_already_exists"
     else
       unless params[:user][:username].empty?
@@ -59,7 +60,7 @@ class UserController < ApplicationController
     end
   end
   post '/login' do
-    @user = User.authenticate(username: params[:username], password: params[:password])
+    @user = Helpers.authenticate(username: params[:username], password: params[:password])
     if @user
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
@@ -68,7 +69,9 @@ class UserController < ApplicationController
     end
   end
   patch '/users/:id' do
-    user = User.find(session[:user_id])
+    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id])
+      user = User.find(params[:id])
+    end
     
     if params[:user][:username].empty?
       params[:user][:username] = user.username
@@ -83,12 +86,12 @@ class UserController < ApplicationController
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
-    if session[:user_id] == params[:id].to_i && params[:bool].include?("yes")
+    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
       user = User.find(params[:id])
       user.destroy
       redirect :'/logout'
     elsif params[:bool] == "no"
-      redirect :'/failure/you_choose_the_non_violence_path_today'
+      redirect :'/failure/you_choose_the_non_violent_path_today'
     else
       redirect :'/failure/server_error'
     end
