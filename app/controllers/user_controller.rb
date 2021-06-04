@@ -58,6 +58,17 @@ class UserController < ApplicationController
     end
   end
   patch '/users/:id' do
+    user = User.find(session[:user_id])
+    
+    if params[:user][:username].empty?
+      params[:user][:username] = user.username
+    end
+    if !params[:user][:password].empty?
+      
+      user.password = params[:password]
+    end
+
+    user.update(params[:user])
 
     redirect :"users/#{user.id}"
   end
