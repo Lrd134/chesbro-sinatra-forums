@@ -11,6 +11,10 @@ class UserController < ApplicationController
     session.clear
     redirect :'/'
   end
+  get '/delete' do
+    @user = User.find(params[user][id])
+    erb :'users/delete'
+  end
   get '/users/:id' do
     if session[:user_id]
       @user = User.find(session[:user_id])
