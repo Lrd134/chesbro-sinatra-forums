@@ -7,7 +7,10 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
-
+  get '/failure/:failure_params' do
+    @failure_reason = params[:failure_params]
+    erb :failure
+  end
   get '/logout' do
 
   end
