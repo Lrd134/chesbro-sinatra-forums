@@ -26,4 +26,14 @@ class PostController < ApplicationController
     @post = Post.create(params[:post])
     redirect "/posts/#{@post.id}"
   end
+  patch '/posts/:id' do
+    @post = Post.find(params[:id])
+    unless !params[:post][:title].empty?
+      params[:post][:title] = @post.title
+    end
+    unless !params[:post][:content].empty?
+      params[:post][:content] = @post.content
+    end
+    
+  end
 end
