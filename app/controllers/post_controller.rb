@@ -31,8 +31,14 @@ class PostController < ApplicationController
     end
   end
   post '/posts' do
-    @post = Post.create(params[:post])
-    redirect "/posts/#{@post.id}"
+    if params[:post][:title].empty?
+      redirect '/failure/title_must_not_be_empty'
+    elsif params[:post][:content].empty?
+      redirect '/failure/post_body_must_have_content'
+    else
+      @post = Post.create(params[:post])
+      redirect "/posts/#{@post.id}"
+    end
   end
   patch '/posts/:id' do
     @post = Post.find(params[:id])
