@@ -20,7 +20,7 @@ class PostController < ApplicationController
   end
 
   get '/posts/:id/edit' do
-    if !Helpers.logged_in?(session[:user_id])
+    if !Helpers.logged_in?(session)
       redirect "/failure/please_login"
     else
       @user = User.find(session[:user_id])
@@ -40,6 +40,7 @@ class PostController < ApplicationController
     unless !params[:post][:content].empty?
       params[:post][:content] = @post.content
     end
-    
+    @post.update(params[:post])
+    redirect "/posts/#{@post.id}"
   end
 end
