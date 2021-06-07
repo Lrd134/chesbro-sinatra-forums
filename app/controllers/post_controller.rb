@@ -20,7 +20,13 @@ class PostController < ApplicationController
   end
 
   get '/posts/:id/edit' do
-    erb :'/posts/edit'
+    if !Helpers.logged_in?(session[:user_id])
+      redirect "/failure/please_login"
+    else
+      @user = User.find(session[:user_id])
+      @post = Post.find(params[:id])
+      erb :'/posts/edit'
+    end
   end
   post '/posts' do
     @post = Post.create(params[:post])
