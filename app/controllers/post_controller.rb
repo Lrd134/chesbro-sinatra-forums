@@ -6,7 +6,7 @@ class PostController < ApplicationController
   end
   get '/posts/new' do
     if Helpers.logged_in?(session)
-      @user = User.find(session(:user_id))
+      @user = User.find(session[:user_id])
       @show = true
     else
       @show = nil
@@ -23,7 +23,7 @@ class PostController < ApplicationController
     erb :'/posts/edit'
   end
   post '/posts' do
-    binding.pry
-
+    @post = Post.create(params[:post])
+    redirect "/posts/#{@post.id}"
   end
 end
