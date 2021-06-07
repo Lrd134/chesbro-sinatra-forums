@@ -43,4 +43,9 @@ class PostController < ApplicationController
     @post.update(params[:post])
     redirect "/posts/#{@post.id}"
   end
+  delete '/posts/:id' do
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect '/posts'
+  end
 end
