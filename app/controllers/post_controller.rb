@@ -22,6 +22,8 @@ class PostController < ApplicationController
   get '/posts/:id/edit' do
     if !Helpers.logged_in?(session)
       redirect "/failure/please_login"
+    elsif !Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
+      redirect "/failure/you_do_not_own_this_resource"
     else
       @user = User.find(session[:user_id])
       @post = Post.find(params[:id])
