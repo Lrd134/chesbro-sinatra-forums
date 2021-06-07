@@ -20,7 +20,7 @@ class UserController < ApplicationController
     erb :'users/delete'
   end
   get '/users/:id' do
-    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id])
+    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
       @logged_in = true
     end
       @user = User.find(params[:id])
@@ -31,7 +31,7 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: @user.id)
+    if Helpers.has_session_same?(session_id: session[:user_id], user_id: @user.id)
       erb :'/users/edit'
     else
       erb :'/failure/please_login'
