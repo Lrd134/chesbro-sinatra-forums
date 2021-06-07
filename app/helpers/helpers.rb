@@ -14,5 +14,8 @@ class Helpers < ApplicationController
   def self.exists?(username)
     User.find_by_username(username) ? true : false
   end
+  def self.logged_in?(session)
+    !!session[:user_id]
+  end
 end
 
