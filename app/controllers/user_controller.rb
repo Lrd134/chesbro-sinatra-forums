@@ -31,11 +31,8 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    if Helpers.has_session_same?(session_id: session[:user_id], user_id: @user.id)
-      erb :'/users/edit'
-    else
-      erb :'/failure/please_login'
-    end
+    Helpers.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? erb(:'/users/edit') : erb(:'/failure/please_login')
+
   end
   post '/users' do
     if Helpers.exists?(params[:user][:username])
@@ -64,8 +61,12 @@ class UserController < ApplicationController
     if @user
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
+    elsif !User.find_by_username(params[:username])
+      redirect :"/failure/username_not_found"
+    elsif params[:password].empty?
+      redirect :'/failure/password_can_not_be_empty'
     else
-      redirect :"/failure/user_not_found"
+      redirect :'/failure/incorrect_password'
     end
   end
   patch '/users/:id' do

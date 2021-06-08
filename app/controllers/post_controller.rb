@@ -21,9 +21,9 @@ class PostController < ApplicationController
 
   get '/posts/:id/edit' do
     if !Helpers.logged_in?(session)
-      redirect "/failure/please_login"
+      redirect :"/failure/please_login"
     elsif !Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
-      redirect "/failure/you_do_not_own_this_resource"
+      redirect :"/failure/you_do_not_own_this_resource"
     else
       @user = User.find(session[:user_id])
       @post = Post.find(params[:id])
@@ -32,12 +32,12 @@ class PostController < ApplicationController
   end
   post '/posts' do
     if params[:post][:title].empty?
-      redirect '/failure/title_must_not_be_empty'
+      redirect :'/failure/title_must_not_be_empty'
     elsif params[:post][:content].empty?
-      redirect '/failure/post_body_must_have_content'
+      redirect :'/failure/post_body_must_have_content'
     else
       @post = Post.create(params[:post])
-      redirect "/posts/#{@post.id}"
+      redirect :"/posts/#{@post.id}"
     end
   end
   patch '/posts/:id' do
@@ -49,11 +49,11 @@ class PostController < ApplicationController
       params[:post][:content] = @post.content
     end
     @post.update(params[:post])
-    redirect "/posts/#{@post.id}"
+    redirect :"/posts/#{@post.id}"
   end
   delete '/posts/:id' do
     @post = Post.find(params[:id])
     @post.destroy
-    redirect '/posts'
+    redirect :'/posts'
   end
 end
