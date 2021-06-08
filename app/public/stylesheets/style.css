@@ -1,7 +1,36 @@
 body {
   background-color: black;
+  color: #b1b1b1;
 }
-p {
-  color: rebeccapurple;
+p#show_post_content {
 
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+
+}
+div#show_post_box {
+  text-align: center;
+  width: auto;
+  margin-left: 64px;
+  margin-right: 64px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+
+}
+h1#show_post_title {
+  color: darkgoldenrod;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+}
+
+div#login {
+
+
+  
 }
