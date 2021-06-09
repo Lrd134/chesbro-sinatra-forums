@@ -70,7 +70,7 @@ class UserController < ApplicationController
     end
   end
   patch '/users/:id' do
-    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id])
+    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
       user = User.find(params[:id])
     end
     
@@ -86,7 +86,7 @@ class UserController < ApplicationController
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
-    if Helpers.has_session_same_as_login?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
+    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
       user = User.find(params[:id])
       user.destroy
       redirect :'/logout'
