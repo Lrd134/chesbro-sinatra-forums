@@ -2,34 +2,10 @@ body {
   background-color: rgb(29, 28, 28);
   color: #b1b1b1;
 }
-p#show_post_content {
 
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 32px;
-  margin-bottom: 16px;
-
-}
-div#show_post_box {
-  text-align: center;
-  width: auto;
-  margin-left: 64px;
-  margin-right: 64px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-
-
-}
-h1#show_post_title {
-  color: darkgoldenrod;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-
-}
 
 div#login {
+  border-radius: 25px;
   margin: auto;
   width: 50%;
   border: 2px solid #0c0035;
@@ -39,20 +15,23 @@ div#login {
   top       : 50%;
   position  : absolute;
   transform : translate(-50%, -50%);
+  background-color: rgb(37, 34, 34);
 }
-input#login_username {
+input#login_password, input#login_username  {
+  border-radius: 100px;
   width: 50%;
   text-rendering: auto;
   background-color: rgba(41, 49, 63, 0.685);
-  color: darkturquoise;
   padding: 12px;
   margin: 16px;
 }
-input#login_password {
-  width: 50%;
-  text-rendering: auto;
-  background-color: rgba(41, 49, 63, 0.685);
-  color: darkturquoise;
-  padding: 12px;
-  margin: 16px;
+input#login_submit {
+  border-radius: 50px;
+  background-color: indianred;
+}
+input#login_username:hover, input#login_password:hover {
+  background-color: rgba(41, 49, 63, 0.849);
+}
+input#login_submit:hover {
+  background-color: rgb(185, 33, 33);
 }
