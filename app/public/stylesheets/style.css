@@ -41,6 +41,8 @@ em#delete_msg {
 .greeting {
   text-align: center;
   color:darkred;
+  margin-top: 35px;
+  margin-bottom: 70px;
 }
 div.post_box {
   border: 2px solid blanchedalmond;
