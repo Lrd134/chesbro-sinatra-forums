@@ -1,8 +1,14 @@
+<head>
+<link rel="stylesheet" type="text/css" href="/stylesheets/posts/new.css">
+</head>
 <% if @show %>
 <div class="post_box">
 <form action="/posts" method="POST">
 <input class="post" id="title" type="text" name="post[title]" placeholder="Title"/><br>
-<input class="post" id="content" type="text" name="post[content]" placeholder="Content"/><br>
+
+<label for="content">Post Content:</label>
+<textarea class="post" id="content" name="post[content]" rows=10 cols=40>
+</textarea>
 <input type="hidden" name="post[user_id]" value="<%=@user.id%>"/>
 <input class="post" id="post_submit" type="submit" value="Create Post"/>
 </form>
