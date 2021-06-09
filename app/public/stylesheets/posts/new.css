@@ -3,3 +3,18 @@ input#post_submit {
   margin: 3px;
   background-color: rgb(174, 150, 212);
 }
+input#post_submit:hover {
+  background-color: rgba(174, 150, 212, 0.848);
+}
+input.post {
+  background-color: darkgrey;
+  border-radius: 3px;
+}
+textarea.post {
+  background-color: darkkhaki;
+  max-width: 83%;
+}
+label.post {
+  position: absolute;
+  right: 75%;
+}
