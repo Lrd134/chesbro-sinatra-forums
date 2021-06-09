@@ -1,0 +1,31 @@
+div#login {
+  border-radius: 25px;
+  margin: auto;
+  width: 50%;
+  border: 2px solid #0c0035;
+  padding: 20px;
+  text-align: center;
+  left      : 50%;
+  top       : 50%;
+  position  : absolute;
+  transform : translate(-50%, -50%);
+  background-color: rgb(37, 34, 34);
+}
+input#login_password, input#login_username  {
+  border-radius: 100px;
+  width: 50%;
+  text-rendering: auto;
+  background-color: rgba(41, 49, 63, 0.685);
+  padding: 12px;
+  margin: 16px;
+}
+input#login_submit {
+  border-radius: 50px;
+  background-color: indianred;
+}
+input#login_username:hover, input#login_password:hover {
+  background-color: rgba(41, 49, 63, 0.849);
+}
+input#login_submit:hover {
+  background-color: rgb(185, 33, 33);
+}
