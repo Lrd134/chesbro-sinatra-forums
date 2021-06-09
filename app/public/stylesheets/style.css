@@ -39,3 +39,7 @@ em#delete_msg {
   color: rgb(255, 0, 43)
 
 }
+.greeting {
+  text-align: center;
+  color:darkred;
+}
