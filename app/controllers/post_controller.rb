@@ -28,7 +28,6 @@ class PostController < ApplicationController
       redirect :"/failure/you_do_not_own_this_resource"
     else
       @user = User.find(session[:user_id])
-      @post = Post.find(params[:id])
       erb :'/posts/edit'
     end
   end

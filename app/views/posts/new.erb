@@ -1,10 +1,12 @@
 <% if @show %>
+<div class="post_box">
 <form action="/posts" method="POST">
-<input type="text" name="post[title]" placeholder="Title"/>
-<input type="text" name="post[content]" placeholder="Content"/>
+<input class="post" id="title" type="text" name="post[title]" placeholder="Title"/>
+<input class="post" id="content" type="text" name="post[content]" placeholder="Content"/>
 <input type="hidden" name="post[user_id]" value="<%=@user.id%>"/>
-<input type="submit" value="Create Post"/>
+<input class="post" id="post_submit" type="submit" value="Create Post"/>
 <% else %>
 <h2> Please login. </h2>
 <% end %>
 </form>
+</div>
