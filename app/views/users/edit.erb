@@ -1,6 +1,9 @@
+<div class="credentials">
+<h3>Update <%=@user.username%></h3>
 <form action="/users/<%=@user.id%>" method="POST">
 <input type="hidden" value="PATCH" name="_method"/>
-<input type="text" name="user[username]" placeholder="Username" />
-<input type="password" name="password" placeholder="Password"/>
-<input type="submit" value="Update <%=@user.username%>"/>
+<input class="credentials" type="text" name="user[username]" placeholder="Username" />
+<input class="credentials" type="password" name="password" placeholder="Password"/><br>
+<input class="credentials_submit" type="submit" value="Update <%=@user.username%>"/>
 </form>
+</div>
