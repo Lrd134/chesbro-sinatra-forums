@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: rgb(29, 28, 28);
   color: #b1b1b1;
 }
 p#show_post_content {
@@ -30,7 +30,29 @@ h1#show_post_title {
 }
 
 div#login {
-
-
-  
+  margin: auto;
+  width: 50%;
+  border: 2px solid #0c0035;
+  padding: 20px;
+  text-align: center;
+  left      : 50%;
+  top       : 50%;
+  position  : absolute;
+  transform : translate(-50%, -50%);
+}
+input#login_username {
+  width: 50%;
+  text-rendering: auto;
+  background-color: rgba(41, 49, 63, 0.685);
+  color: darkturquoise;
+  padding: 12px;
+  margin: 16px;
+}
+input#login_password {
+  width: 50%;
+  text-rendering: auto;
+  background-color: rgba(41, 49, 63, 0.685);
+  color: darkturquoise;
+  padding: 12px;
+  margin: 16px;
 }
