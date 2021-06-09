@@ -20,7 +20,6 @@ div.credentials {
 input.credentials  {
   border-radius: 100px;
   width: 50%;
-  text-rendering: auto;
   background-color: rgba(41, 49, 63, 0.685);
   padding: 12px;
   margin: 16px;
@@ -42,4 +41,12 @@ em#delete_msg {
 .greeting {
   text-align: center;
   color:darkred;
+}
+div.post_box {
+  border: 2px solid blanchedalmond;
+  margin: auto;
+  width: 70%;
+  background-color: cornflowerblue;
+  text-align: center;
+  padding: 50px;
 }
