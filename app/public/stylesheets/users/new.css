@@ -1,0 +1,35 @@
+h4#welcome_msg {
+  color:rgb(139, 128, 240);
+
+}
+div#signup {
+  border-radius: 25px;
+  margin: auto;
+  width: 50%;
+  border: 2px solid #0c0035;
+  padding: 20px;
+  text-align: center;
+  left      : 50%;
+  top       : 50%;
+  position  : absolute;
+  transform : translate(-50%, -50%);
+  background-color: rgb(37, 34, 34);
+}
+input#signup_password, input#signup_username  {
+  border-radius: 100px;
+  width: 50%;
+  text-rendering: auto;
+  background-color: rgba(41, 49, 63, 0.685);
+  padding: 12px;
+  margin: 16px;
+}
+input#signup_submit {
+  border-radius: 50px;
+  background-color: indianred;
+}
+input#signup_username:hover, input#signup_password:hover {
+  background-color: rgba(41, 49, 63, 0.849);
+}
+input#signup_submit:hover {
+  background-color: rgb(185, 33, 33);
+}
