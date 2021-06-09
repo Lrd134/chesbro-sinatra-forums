@@ -35,3 +35,7 @@ input.credentials:hover {
 input#credentials_submit:hover {
   background-color: rgb(185, 33, 33);
 }
+em#delete_msg {
+  color: rgb(255, 0, 43)
+
+}

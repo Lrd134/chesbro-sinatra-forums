@@ -1,10 +1,12 @@
+<div class="credentials">
 <h1> Are you sure?</h1>
 
-<h4>You would like to delete <%=@user.username%></h4>
+<h4>You would like to <em id="delete_msg">delete</em> <%=@user.username%></h4>
 
 <form action="/users/delete/<%=@user.id%>" method="POST">
 <input type="hidden" value="DELETE" name="_method"/>
-<label for="bool">Please Enter "yes" to delete <%=@user.username%></label>
-<input type="text" placeholder="yes" value="no" id="bool" name="bool"/>
-<input type="submit" value="Delete <%=@user.username%>"/>
+<label for="bool">Please Enter "yes" to <em id="delete_msg">delete</em> <%=@user.username%></label><br>
+<input class="credentials" type="text" placeholder="yes" value="no" id="bool" name="bool"/><br>
+<input class="credentials_submit" type="submit" value="Delete <%=@user.username%>"/>
 </form>
+</div>
