@@ -1,0 +1,25 @@
+div.profile {
+  position: relative;
+  border: 2px solid blueviolet;
+  border-radius: 25px;
+  margin: auto;
+  width: 60%;
+  text-align: left;
+
+}
+input#delete_button {
+  position: relative;
+  left: 80%;
+
+  margin-bottom: 25px;
+}
+p.profile {
+  color:cadetblue;
+  margin-left: 12px;
+
+}
+h1.profile{
+  text-align: center;
+  color:crimson;
+
+}

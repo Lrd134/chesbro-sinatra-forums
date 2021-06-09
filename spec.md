@@ -13,7 +13,7 @@ x Ensure that users can't modify content created by other users # If you try to 
  Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 Confirm
 
- You have a large number of small Git commits
- Your commit messages are meaningful
- You made the changes in a commit that relate to the commit message
- You don't include changes in a commit that aren't related to the commit message
+x You have a large number of small Git commits # I do have a large number of commits.
+x Your commit messages are meaningful # I try to give meaningful messages while keeping them short"
+x You made the changes in a commit that relate to the commit message # If changes were made irrelevant to a commit, they were very small.
+x You don't include changes in a commit that aren't related to the commit message # If there were any changes made there were not commit worthy themselves.

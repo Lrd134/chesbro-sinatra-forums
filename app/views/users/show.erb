@@ -2,14 +2,14 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/users/show.css">
 </head>
 <div class="profile">
-<h1><%=@user.username.capitalize%>'s Homepage</h1>
-<p> This is the user! </p>
-<p><em>Username:</em> <%=@user.username%></p>
+<h1 class="profile"><%=@user.username.capitalize%>'s Homepage</h1>
+<p class="profile"> This is the user! </p>
+<p class="profile"><em>Username:</em> <%=@user.username%></p>
 <%if @logged_in%>
 <form action="/delete" method="POST">
 <input type="hidden" value="GET" name="_method"/>
 <input type="hidden" value="<%=@user.id%>" name="user[id]"/>
-<input type="submit" value="Delete <%=@user.username%>"/>
+<input id="delete_button" type="submit" value="Delete <%=@user.username%>"/>
 </form>
 <%end%>
 </div>
