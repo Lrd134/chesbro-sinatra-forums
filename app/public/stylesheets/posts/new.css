@@ -6,15 +6,13 @@ input#post_submit {
 input#post_submit:hover {
   background-color: rgba(174, 150, 212, 0.848);
 }
-input.post {
+textarea.post, #title {
   background-color: darkgrey;
   border-radius: 3px;
+  text-align: center;
 }
-textarea.post {
+textarea.post, #content {
   background-color: darkkhaki;
   max-width: 83%;
-}
-label.post {
-  position: absolute;
-  right: 75%;
+  text-align: left;
 }
