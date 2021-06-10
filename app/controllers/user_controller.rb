@@ -30,7 +30,7 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? erb(:'/users/edit') : erb(:'/failure/please_login')
+    !ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? redirect(:'/failure/please_login') : erb(:'/users/edit')
 
   end
   post '/users' do
