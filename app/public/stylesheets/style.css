@@ -70,3 +70,7 @@ textarea.post, #title:valid {
   background-color: rgba(174, 150, 212, 0);
   color: darkgoldenrod;
 }
+input#delete_button{
+  float: right;
+
+}
