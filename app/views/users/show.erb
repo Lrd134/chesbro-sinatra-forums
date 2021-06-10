@@ -9,7 +9,7 @@
 <%if @logged_in%>
 <form action="/users/<%=@user.id%>/edit" method="POST">
 <input type="hidden" value="GET" name="_method"/>
-<input id="edit_button" type="submit" value="Edit <%=@user.username%>"/>
+<input class="credentials_submit" id="edit_button" type="submit" value="Edit <%=@user.username%>"/>
 </form>
 <%end%>
 </div>
