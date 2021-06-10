@@ -51,7 +51,7 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
     else
-      redirect :'/failure/incorrect_password'
+      redirect :'/failure/invalid_information'
     end
   end
   patch '/users/:id' do
@@ -62,11 +62,6 @@ class UserController < ApplicationController
     if params[:user][:username].empty?
       params[:user][:username] = user.username
     end
-    if !params[:password].empty?
-      
-      user.password = params[:password]
-    end
-
     user.update(params[:user])
     redirect :"users/#{user.id}"
   end

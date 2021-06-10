@@ -3,7 +3,7 @@
 <form action="/users/<%=@user.id%>" method="POST">
 <input type="hidden" value="PATCH" name="_method"/>
 <input class="credentials" type="text" name="user[username]" placeholder="Username"/>
-<input class="credentials" type="password" name="password" placeholder="Password"/><br>
+<input class="credentials" type="password" name="user[password]" placeholder="Current Password" required/><br>
 <input class="credentials_submit" type="submit" value="Update <%=@user.username%>"/>
 </form>
 <form action="/delete" method="POST">
