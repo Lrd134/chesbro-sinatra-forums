@@ -5,13 +5,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
     set :public_folder, 'app/public'
   end
-  get '/' do
-    erb :index
-  end
-  get '/failure/:failure_params' do
-    @failure_reason = params[:failure_params].split("_").map {|r| r.capitalize}.join(" ")
-    erb :failure
-  end
   helpers do
     def self.has_session_same?(session_id:, user_id:)
       session_id == user_id.to_i ? true : false
@@ -28,6 +21,14 @@ class ApplicationController < Sinatra::Base
       User.find_by_username(username) ? true : false
     end
   end
+  get '/' do
+    erb :index
+  end
+  get '/failure/:failure_params' do
+    @failure_reason = params[:failure_params].split("_").map {|r| r.capitalize}.join(" ")
+    erb :failure
+  end
+
 
   
   

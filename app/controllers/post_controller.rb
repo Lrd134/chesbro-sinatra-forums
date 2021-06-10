@@ -33,12 +33,9 @@ class PostController < ApplicationController
   end
   post '/posts' do
       @post = Post.create(params[:post])
-      binding.pry
-      if @post
-        redirect :"/posts/#{@post.id}"
-      else
-        redirect :'/failure'
-      end
+
+      redirect :"/posts/#{@post.id}"
+
   end
   patch '/posts/:id' do
     @post = Post.find(params[:id])
