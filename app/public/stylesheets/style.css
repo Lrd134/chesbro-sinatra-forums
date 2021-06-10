@@ -3,7 +3,27 @@ body {
   color: #b1b1b1;
 }
 
+.header  {
+  list-style-type: none;
+  margin: 0;
+  padding: 1.3px;
+  display: flex;
+  background-color: indigo;
+  
+}
+a.header:hover {
+  background-color: rgb(114, 5, 192);
+}
+a.header, a.header:visited {
+  color:hotpink;
+  text-decoration: none;
+}
+.header_box {
+  min-width: 25px;
+  border: 1px solid green;
+  float: right;
 
+}
 div.credentials {
   border-radius: 25px;
   margin: auto;
