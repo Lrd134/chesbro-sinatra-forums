@@ -23,8 +23,8 @@ a.header, a.header:visited {
   min-width: 210px;
   min-height: 30px;
   border: 1px solid green;
-  float: right;
-
+  position  : absolute;
+  right: 5%;
 }
 div.credentials {
   border-radius: 25px;
