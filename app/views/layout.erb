@@ -5,6 +5,18 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
+<ul>
+  <li><a href="/users">Users</a></li>
+  <li><a href="/posts">Posts</a></li>
+
+  <% if ApplicationController.logged_in?(session) %>
+    <li><a href="/users/<%=session[:user_id]%>">Home Page</a></li>
+    <li><a href="/logout">Logout</a></li>
+  <% else %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Signup</a></li>
+  <% end %>
+</ul>
 <h1 class="greeting">GamingDecoded Forums</h1>
 <%= yield %>
 </body>
