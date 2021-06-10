@@ -22,10 +22,11 @@ class PostController < ApplicationController
       if @user.posts.include?(@post)
         @owned = true
         erb :'/posts/show'
-      else
-        @owned = false
-        erb :'/posts/show'
+
       end
+    else
+      @owned = false
+      erb :'/posts/show'
     end
   end
 
