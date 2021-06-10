@@ -5,6 +5,7 @@ class PostController < ApplicationController
     erb :'/posts/index'
   end
   get '/posts/new' do
+
     if ApplicationController.logged_in?(session)
       @user = User.find(session[:user_id])
       @show = true
@@ -22,7 +23,8 @@ class PostController < ApplicationController
   get '/posts/:id/edit' do
     
     @post = Post.find(params[:id])
-    if ApplicationController.logged_in?(session)
+    
+    if !ApplicationController.logged_in?(session)
       redirect :"/failure/please_login"
     elsif !ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @post.user_id.to_s)
       redirect :"/failure/you_do_not_own_this_resource"
