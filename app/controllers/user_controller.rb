@@ -37,33 +37,18 @@ class UserController < ApplicationController
     if ApplicationController.exists?(params[:user][:username])
       redirect :"/failure/user_#{params[:user][:username]}_already_exists"
     else
-      unless params[:user][:username].empty?
-        unless params[:user][:password].empty?
-          @user = User.create(params[:user])
-          if @user
-            session[:user_id] = @user.id
-            redirect :"/users/#{@user.id}"
-          else
-            failure = "server_error"
-            redirect :"/failure/#{failure}"
-          end
-        end
-        failure = "invalid_password_given"
-        redirect :"/failure/#{failure}"
-      end
-      failure = "invalid_username_given"
-      redirect :"/failure/#{failure}"
+    @user = User.create(params[:user])
+    if @user.id
+      session[:user_id] = @user.id
+      redirect :"/users/#{@user.id}"
     end
+
   end
   post '/login' do
     @user = ApplicationController.authenticate(username: params[:username], password: params[:password])
     if @user
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
-    elsif !User.find_by_username(params[:username])
-      redirect :"/failure/username_not_found"
-    elsif params[:password].empty?
-      redirect :'/failure/password_can_not_be_empty'
     else
       redirect :'/failure/incorrect_password'
     end
