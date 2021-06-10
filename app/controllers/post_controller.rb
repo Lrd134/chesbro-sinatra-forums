@@ -17,7 +17,17 @@ class PostController < ApplicationController
   end
   get '/posts/:id' do
     @post = Post.find(params[:id])
-    erb :'/posts/show'
+    if ApplicationController.logged_in?(session)
+      @user = User.find(session[:user_id])
+      if @user.posts.include?(@post)
+        binding.pry
+        @owned = true
+        erb :'/posts/show'
+      else
+        @owned = false
+        erb :'/posts/show'
+      end
+    end
   end
 
   get '/posts/:id/edit' do
