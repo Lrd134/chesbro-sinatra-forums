@@ -20,11 +20,11 @@ a.header, a.header:visited {
 }
 .header_box {
   background-color: indigo;
-  min-width: 210px;
-  min-height: 30px;
+  max-width: 250px;
+  max-height: 30px;
   border: 1px solid green;
   position  : absolute;
-  right: 5%;
+  right: 3%;
 }
 div.credentials {
   border-radius: 25px;
