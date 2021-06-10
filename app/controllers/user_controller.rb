@@ -36,7 +36,7 @@ class UserController < ApplicationController
   post '/users' do
     if ApplicationController.exists?(params[:user][:username])
       redirect :"/failure/user_#{params[:user][:username]}_already_exists"
-    else
+    end
     @user = User.create(params[:user])
     if @user.id
       session[:user_id] = @user.id
