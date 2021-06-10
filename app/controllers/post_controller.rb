@@ -20,7 +20,6 @@ class PostController < ApplicationController
     if ApplicationController.logged_in?(session)
       @user = User.find(session[:user_id])
       if @user.posts.include?(@post)
-        binding.pry
         @owned = true
         erb :'/posts/show'
       else
