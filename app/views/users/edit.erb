@@ -6,4 +6,9 @@
 <input class="credentials" type="password" name="password" placeholder="Password"/><br>
 <input class="credentials_submit" type="submit" value="Update <%=@user.username%>"/>
 </form>
+<form action="/delete" method="POST">
+<input type="hidden" value="GET" name="_method"/>
+<input type="hidden" value="<%=@user.id%>" name="user[id]"/>
+<input id="delete_button" type="submit" value="Delete <%=@user.username%>"/>
+</form>
 </div>
