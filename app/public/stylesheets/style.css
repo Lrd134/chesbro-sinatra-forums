@@ -45,11 +45,12 @@ em#delete_msg {
   margin-bottom: 70px;
 }
 div.post_box {
-  border: 2px solid blanchedalmond;
+  border: 2px solid rgb(56, 45, 28);
   margin: auto;
   width: 70%;
-  background-color: cornflowerblue;
+  background-color: rgb(13, 17, 26);
   text-align: center;
   padding: 50px;
-  color: rgb(138, 44, 0);
+  border-radius: 10px;
+  color: rgb(172, 172, 172);
 }
