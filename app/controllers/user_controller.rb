@@ -20,7 +20,7 @@ class UserController < ApplicationController
     erb :'users/delete'
   end
   get '/users/:id' do
-    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
+    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id])
       @logged_in = true
     end
       @user = User.find(params[:id])
@@ -31,11 +31,11 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])
-    Helpers.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? erb(:'/users/edit') : erb(:'/failure/please_login')
+    ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? erb(:'/users/edit') : erb(:'/failure/please_login')
 
   end
   post '/users' do
-    if Helpers.exists?(params[:user][:username])
+    if ApplicationController.exists?(params[:user][:username])
       redirect :"/failure/user_#{params[:user][:username]}_already_exists"
     else
       unless params[:user][:username].empty?
@@ -57,7 +57,7 @@ class UserController < ApplicationController
     end
   end
   post '/login' do
-    @user = Helpers.authenticate(username: params[:username], password: params[:password])
+    @user = ApplicationController.authenticate(username: params[:username], password: params[:password])
     if @user
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
@@ -70,7 +70,7 @@ class UserController < ApplicationController
     end
   end
   patch '/users/:id' do
-    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id])
+    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id])
       user = User.find(params[:id])
     end
     
@@ -86,7 +86,7 @@ class UserController < ApplicationController
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
-    if Helpers.has_session_same?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
+    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
       user = User.find(params[:id])
       user.destroy
       redirect :'/logout'

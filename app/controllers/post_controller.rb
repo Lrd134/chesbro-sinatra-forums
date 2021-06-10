@@ -5,7 +5,7 @@ class PostController < ApplicationController
     erb :'/posts/index'
   end
   get '/posts/new' do
-    if Helpers.logged_in?(session)
+    if ApplicationController.logged_in?(session)
       @user = User.find(session[:user_id])
       @show = true
     else
@@ -22,9 +22,9 @@ class PostController < ApplicationController
   get '/posts/:id/edit' do
     
     @post = Post.find(params[:id])
-    if !Helpers.logged_in?(session)
+    if ApplicationController.logged_in?(session)
       redirect :"/failure/please_login"
-    elsif !Helpers.has_session_same?(session_id: session[:user_id], user_id: @post.user_id.to_s)
+    elsif !ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @post.user_id.to_s)
       redirect :"/failure/you_do_not_own_this_resource"
     else
       @user = User.find(session[:user_id])
@@ -32,14 +32,13 @@ class PostController < ApplicationController
     end
   end
   post '/posts' do
-    if params[:post][:title].empty?
-      redirect :'/failure/title_must_not_be_empty'
-    elsif params[:post][:content].empty?
-      redirect :'/failure/post_body_must_have_content'
-    else
       @post = Post.create(params[:post])
-      redirect :"/posts/#{@post.id}"
-    end
+      binding.pry
+      if @post
+        redirect :"/posts/#{@post.id}"
+      else
+        redirect :'/failure'
+      end
   end
   patch '/posts/:id' do
     @post = Post.find(params[:id])
