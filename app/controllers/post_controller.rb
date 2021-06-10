@@ -22,12 +22,11 @@ class PostController < ApplicationController
       if @user.posts.include?(@post)
         @owned = true
         erb :'/posts/show'
-
       end
-    else
+    end
       @owned = false
       erb :'/posts/show'
-    end
+
   end
 
   get '/posts/:id/edit' do
