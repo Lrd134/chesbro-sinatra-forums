@@ -6,19 +6,18 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'app/public'
   end
   helpers do
-    def self.has_session_same?
-      session_id == user_id.to_i ? true : false
-    end
-    def self.logged_in?
-      !!session[:user_id]
-      
-    end
-        def self.authenticate(username:, password:)
+
+    def self.authenticate(username:, password:)
       @user = User.find_by_username(username)
       @user && @user.authenticate(password) ? @user : nil
     end
-    def self.exists?(username)
-      User.find_by_username(username) ? true : false
+    def current_user
+      binding.pry
+      @current_user ||= User.find(session[:user_id])
+    end
+    def logged_in?
+      !!current_user
+      
     end
   end
   get '/' do

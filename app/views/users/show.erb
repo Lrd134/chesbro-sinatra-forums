@@ -3,7 +3,7 @@
 </head>
 
 <div class="profile">
-<h1 class="profile"><%=@user.username.capitalize%>'s Homepage</h1>
+<h1 class="profile"><%=@current_user.username%>'s Homepage</h1>
 <p class="profile"> This is the user! </p>
 <p class="profile"><em>Username:</em> <%=@user.username%></p>
 <%if @logged_in%>
