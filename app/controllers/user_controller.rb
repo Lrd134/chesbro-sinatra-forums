@@ -19,14 +19,8 @@ class UserController < ApplicationController
     erb :'users/delete'
   end
   get '/users/:id' do
-    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id])
-      @logged_in = true
-    end
       @user = User.find(params[:id])
-      
       erb :'/users/show'
-    
-
   end
   get '/users/:id/edit' do
     @user = User.find(params[:id])

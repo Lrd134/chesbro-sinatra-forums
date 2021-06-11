@@ -3,10 +3,10 @@
 </head>
 
 <div class="profile">
-<h1 class="profile"><%=@current_user.username%>'s Homepage</h1>
+<h1 class="profile"><%=@user.username.capitalize%>'s Homepage</h1>
 <p class="profile"> This is the user! </p>
 <p class="profile"><em>Username:</em> <%=@user.username%></p>
-<%if @logged_in%>
+<%if logged_in? %>
 <form action="/users/<%=@user.id%>/edit" method="POST">
 <input type="hidden" value="GET" name="_method"/>
 <input class="credentials_submit" id="edit_button" type="submit" value="Edit <%=@user.username%>"/>
