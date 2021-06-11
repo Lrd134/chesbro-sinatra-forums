@@ -1,6 +1,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/stylesheets/users/login.css">
 </head>
+<% if !logged_in? %>
 <div class="credentials">
 <h3 id="login_msg"> Please Login </h3>
 
@@ -11,3 +12,4 @@
 </form>
 
 </div>
+<% end %>
