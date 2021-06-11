@@ -15,7 +15,7 @@ class UserController < ApplicationController
     erb :'/users/index'
   end
   get '/delete' do
-    @user = User.find(params[:user][:id])
+    @user = current_user
     erb :'users/delete'
   end
   get '/users/:id' do
@@ -23,8 +23,8 @@ class UserController < ApplicationController
       erb :'/users/show'
   end
   get '/users/:id/edit' do
-    @user = User.find(params[:id])
-    !ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @user.id) ? redirect(:'/failure/please_login') : erb(:'/users/edit')
+    @user = current_user
+    !owns_resource? ? redirect(:'/failure/please_login') : erb(:'/users/edit')
 
   end
   post '/users' do
@@ -40,7 +40,7 @@ class UserController < ApplicationController
 
   end
   post '/login' do
-    @user = ApplicationController.authenticate(username: params[:username], password: params[:password])
+    @user = User.authenticate(username: params[:username], password: params[:password])
     if @user
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
