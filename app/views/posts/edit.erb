@@ -2,10 +2,11 @@
 <div class="post_box">
 <form action="/posts/<%=@post.id%>" method="POST">
 <input type="hidden" name="_method" value="PATCH"/>
-<textarea class="post" id="title" name="post[title]" placeholder="Title" rows=1 cols=50 required>
+<textarea class="post" id="title" name="post[title]"  rows=1 cols=50 required>
+<%=@post.title%>
 </textarea><br>
-<textarea class="post" placeholder="Post Content" id="content" name="post[content]" rows=10 cols=100 required>
-</textarea><br>
+<textarea class="post" id="content" name="post[content]" rows=10 cols=100 required>
+<%=@post.content%></textarea><br>
 <input type="hidden" name="post[user_id]" value="<%=@user.id%>"/>
 <input type="submit" value="Update Post"/>
 
