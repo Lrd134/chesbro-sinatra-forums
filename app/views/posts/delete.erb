@@ -1,0 +1,11 @@
+<% if logged_in? %>
+<div class="credentials">
+<h4>You would like to <em id="delete_msg">delete</em> <%=@post.title%></h4>
+<form action="/posts/delete/<%=@post.id%>" method="POST">
+<input type="hidden" value="DELETE" name="_method"/>
+<label for="bool">Please Enter "yes" to <em id="delete_msg">delete</em><br>
+<input class="credentials" type="text" placeholder="yes" value="no" id="bool" name="bool" required/><br>
+<input class="credentials_submit" type="submit" value="Delete Post"/>
+</form>
+</div>
+<% end %>

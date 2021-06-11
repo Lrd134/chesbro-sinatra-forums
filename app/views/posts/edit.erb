@@ -12,8 +12,8 @@
 
 </form>
 
-<form action="/posts/<%=@post.id%>" method="POST">
-<input type="hidden" name="_method" value="DELETE"/>
+<form action="/posts/<%=@post.id%>/delete" method="POST">
+<input type="hidden" name="_method" value="GET"/>
 <input type="submit" value="Delete Post"/>
 </form>
 </div>
