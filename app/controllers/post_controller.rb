@@ -17,7 +17,7 @@ class PostController < ApplicationController
   end
   get '/posts/:id' do
     @post = Post.find(params[:id])
-    if ApplicationController.logged_in?(session)
+    if logged_in?
       @user = User.find(session[:user_id])
       if @user.posts.include?(@post)
         @owned = true

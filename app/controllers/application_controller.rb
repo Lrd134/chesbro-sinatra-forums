@@ -6,10 +6,10 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'app/public'
   end
   helpers do
-    def self.has_session_same?(session_id:, user_id:)
+    def self.has_session_same?
       session_id == user_id.to_i ? true : false
     end
-    def self.logged_in?(session)
+    def self.logged_in?
       !!session[:user_id]
       
     end
