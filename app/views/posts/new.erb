@@ -1,7 +1,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/stylesheets/posts/new.css">
 </head>
-<% if @show %>
+<% if logged_in? %>
 <div class="post_box">
 <form action="/posts" method="POST">
 <textarea class="post" id="title" name="post[title]" placeholder="Title" rows=1 cols=50 required>

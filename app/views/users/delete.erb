@@ -1,3 +1,4 @@
+<% if logged_in %>
 <div class="credentials">
 <h1> Are you sure?</h1>
 
@@ -10,3 +11,4 @@
 <input class="credentials_submit" type="submit" value="Delete <%=@user.username%>"/>
 </form>
 </div>
+<% end %>
