@@ -1,7 +1,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/stylesheets/users/new.css">
 </head>
-<% if logged_in? %>
+<% if !logged_in? %>
 <div class="credentials">
 <h4 id="welcome_msg"> Welcome, please create a user. </h4>
 <form action="/users" method="POST">
