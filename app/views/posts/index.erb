@@ -1,13 +1,6 @@
+<% if logged_in? %>
 <a href="/posts/new" id="post_button">New Post</a>
+<% end %>
 <% @posts.each do | post | %>
-  <table>
-    <tr>
-      <th>Post Title:</th>
-      <td><a href="/posts/<%=post.id%>"><%=post.title%><a></td>
-    </tr>
-    <tr>
-      <th>Post Summary:</th>
-      <td><%#post.trimmed%></td>
-    </tr>
-  <table>
+<h3>Post Title: <a href="/posts/<%=post.id%>"><%=post.title%><a></h3>
 <% end %>
