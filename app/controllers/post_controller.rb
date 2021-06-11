@@ -5,48 +5,34 @@ class PostController < ApplicationController
     erb :'/posts/index'
   end
   get '/posts/new' do
-
-    if ApplicationController.logged_in?(session)
-      @user = User.find(session[:user_id])
-      @show = true
-    else
-      @show = nil
-    end
+    @user = current_user
     
     erb :'/posts/new'
   end
   get '/posts/:id' do
     @post = Post.find(params[:id])
-    if logged_in?
-      @user = User.find(session[:user_id])
-      if @user.posts.include?(@post)
-        @owned = true
-        erb :'/posts/show'
-      end
-    end
-      @owned = false
-      erb :'/posts/show'
-
+    @user = current_user
+    erb :'/posts/show'
   end
 
   get '/posts/:id/edit' do
     
     @post = Post.find(params[:id])
     
-    if !ApplicationController.logged_in?(session)
+    if !logged_in?
       redirect :"/failure/please_login"
-    elsif !ApplicationController.has_session_same?(session_id: session[:user_id], user_id: @post.user_id.to_s)
-      redirect :"/failure/you_do_not_own_this_resource"
     else
-      @user = User.find(session[:user_id])
+      @user = current_user
       erb :'/posts/edit'
     end
   end
   post '/posts' do
       @post = Post.create(params[:post])
-
-      redirect :"/posts/#{@post.id}"
-
+      if @post
+        redirect :"/posts/#{@post.id}"
+      else
+        redirect :'/posts/new'
+      end
   end
   patch '/posts/:id' do
     @post = Post.find(params[:id])
