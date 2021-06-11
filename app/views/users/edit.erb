@@ -1,4 +1,4 @@
-<% if logged_in %>
+<% if logged_in? %>
 <div class="credentials">
 <h3>Update <%=@user.username%></h3>
 <form action="/users/<%=@user.id%>" method="POST">
