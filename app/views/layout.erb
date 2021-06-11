@@ -10,7 +10,7 @@
   <li class="header"><a class="header" href="/users">Users</a></li>
   <li class="header"><a class="header" href="/posts">Posts</a></li>
 
-  <% if true#logged_in? %>
+  <% if logged_in? %>
     <li class="header"><a class="header" href="/users/<%=session[:user_id]%>">Home Page</a></li>
     <li class="header"><a class="header" href="/logout">Logout</a></li>
   <% else %>
