@@ -1,9 +1,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/stylesheets/posts/show.css">
 </head>
-<% if @owned %>
-<% binding.pry %>
-<a href="/posts/<%= @post.id %>/edit">Edit Post</a>
+<% if logged_in? %>
+<div>
+<a href="/posts/<%=@post.id%>/edit">Edit Post</a>
+</div>
+</form>
 <% end %>
 <h1 id="show_post_title"><%=@post.title%></h1>
 <div class="post_box">
