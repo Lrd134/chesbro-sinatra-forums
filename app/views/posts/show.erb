@@ -2,10 +2,8 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/posts/show.css">
 </head>
 <% if @owned %>
-<form action="/posts/<%=@post.id%>/edit" method="POST">
-<input type="hidden" value="GET" name="_method"/>
-<input type="submit" value="Edit Post"/>
-</form>
+<% binding.pry %>
+<a href="/posts/<%= @post.id %>/edit">Edit Post</a>
 <% end %>
 <h1 id="show_post_title"><%=@post.title%></h1>
 <div class="post_box">
