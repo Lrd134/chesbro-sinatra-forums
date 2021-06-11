@@ -14,7 +14,10 @@ class PostController < ApplicationController
     @user = current_user
     erb :'/posts/show'
   end
-
+  get '/posts/:id/delete' do
+    @post = Post.find(params[:id])
+    erb :'/posts/delete'
+  end
   get '/posts/:id/edit' do
     
     @post = Post.find(params[:id])
@@ -45,9 +48,14 @@ class PostController < ApplicationController
     @post.update(params[:post])
     redirect :"/posts/#{@post.id}"
   end
+
   delete '/posts/:id' do
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect :'/posts'
+    if params[:bool].include?("yes")
+      @post = Post.find(params[:id])
+      @post.destroy
+      redirect :'/posts'
+    else 
+      redirect :"/posts/#{params[:id]}/edit"
+    end
   end
 end
