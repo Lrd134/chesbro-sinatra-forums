@@ -24,8 +24,7 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = current_user
-    !owns_resource? ? redirect(:'/failure/please_login') : erb(:'/users/edit')
-
+    current_user.id == params[:id] ? redirect(:'/failure/please_login') : erb(:'/users/edit')
   end
   post '/users' do
     @user = User.create(params[:user])
@@ -49,9 +48,8 @@ class UserController < ApplicationController
     end
   end
   patch '/users/:id' do
-    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id])
-      user = User.find(params[:id])
-    end
+    user = current_user
+    
     
     if params[:user][:username].empty?
       params[:user][:username] = user.username
@@ -60,14 +58,12 @@ class UserController < ApplicationController
     redirect :"users/#{user.id}"
   end
   delete '/users/delete/:id' do
-    if ApplicationController.has_session_same?(session_id: session[:user_id], user_id: params[:id]) && params[:bool].include?("yes")
-      user = User.find(params[:id])
+    if params[:bool].include?("yes")
+      user = current_user
       user.destroy
       redirect :'/logout'
-    elsif params[:bool] == "no"
-      redirect :'/failure/you_choose_the_non_violent_path_today'
     else
-      redirect :'/failure/server_error'
+      redirect :'/failure/you_choose_the_non_violent_path_today'
     end
   end
 end
