@@ -3,13 +3,15 @@ class RepliesController < ApplicationController
   # GET: /replies
 
   # GET: /replies/new
-  get "/replies/new" do
+  get "/posts/:post_id/reply" do
+    @post_id = params[:post_id]
+    @user = current_user
     erb :"/replies/new.html"
   end
 
   # POST: /replies
-  post "/replies" do
-    redirect "/replies"
+  post "/reply" do
+    redirect "/posts"
   end
 
   # GET: /replies/5

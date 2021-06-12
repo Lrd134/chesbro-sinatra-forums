@@ -1,1 +1,6 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<form action="/reply" method="POST">
+<textarea name="reply[message]"></textarea>
+<input type="hidden" value="<%=@user.id%>" name="reply[user_id]"/>
+<input type="hidden" value="<%=@post_id%>" name="reply[post_id]"/>
+<input type="submit" value="Create Reply"/>
+</form>
