@@ -16,7 +16,7 @@
   <% @replies.each do | reply | %>
     <div class="reply_box">
       <p class="reply reply_timestamp"><%=reply.created_at.localtime.ctime%></p>
-      <p class="reply reply_user"><%=username(reply.user_id)%></p>
+      <p class="reply reply_user"> <a href="/replies/<%=reply.id%>">Reply</a> from <a href="/users/<%=current_user.id%>"><%=username(reply.user_id)%></a></p>
       <p class="reply reply_message"><%=reply.message%></p>
     </div>
   <% end %>
