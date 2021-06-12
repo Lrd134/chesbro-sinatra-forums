@@ -5,13 +5,19 @@ class RepliesController < ApplicationController
   # GET: /replies/new
   get "/posts/:post_id/reply" do
     @post_id = params[:post_id]
-    @user = current_user
     erb :"/replies/new.html"
   end
 
   # POST: /replies
   post "/reply" do
-    redirect "/posts"
+    params[:reply][:user_id] = current_user.id
+    reply = Reply.create(params[:reply])
+    
+    if reply.valid?
+      redirect :"/posts/#{reply.post_id}"
+    else
+      redirect :'/failure'
+    end
   end
 
   # GET: /replies/5
