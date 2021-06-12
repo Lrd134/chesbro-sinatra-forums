@@ -40,11 +40,15 @@ class UserController < ApplicationController
   end
   post '/login' do
     @user = User.find_by(params[:user])
-    if @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect :"/users/#{@user.id}"
+    if !!@user
+      if @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect :"/users/#{@user.id}"
+      else
+        redirect :'/failure/invalid_information'
+      end
     else
-      redirect :'/failure/invalid_information'
+      redirect :'/failure/'
     end
   end
   patch '/users/:id' do
@@ -57,7 +61,7 @@ class UserController < ApplicationController
       user.update(params[:user])
       redirect :"users/#{user.id}"
     end
-    redirect to :'/failure'
+    redirect to :'/failure/'
   end
   delete '/users/delete/:id' do
     if params[:bool].include?("yes")

@@ -30,6 +30,7 @@ class PostController < ApplicationController
     end
   end
   post '/posts' do
+      params[:post][:user_id] = current_user.id
       @post = Post.create(params[:post])
       if @post
         redirect :"/posts/#{@post.id}"
@@ -53,12 +54,15 @@ class PostController < ApplicationController
   end
 
   delete '/posts/:id' do
-    if params[:bool].include?("yes")
-      @post = Post.find(params[:id])
-      @post.destroy
-      redirect :'/posts'
-    else 
-      redirect :"/posts/#{params[:id]}/edit"
+    @post = Post.find(params[:id])
+    unless current_user.id != @post.user_id
+      if params[:bool].include?("yes")
+        @post.destroy
+        redirect :'/posts'
+      else 
+        redirect :"/posts/#{params[:id]}/edit"
+      end
     end
+    redirect :"/failure"
   end
 end
