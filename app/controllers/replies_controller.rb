@@ -22,6 +22,7 @@ class RepliesController < ApplicationController
 
   # GET: /replies/5
   get "/replies/:id" do
+    @reply = Reply.find_by(id: params[:id])
     erb :"/replies/show.html"
   end
 

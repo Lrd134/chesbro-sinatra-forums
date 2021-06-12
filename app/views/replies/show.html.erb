@@ -1,1 +1,4 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<%=@reply.message%>
+<% if logged_in? && current_user.id == @reply.user_id%>
+  <a href="/replies/<%=@reply.id%>/edit">Edit Reply</a>
+<% end %>
