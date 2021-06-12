@@ -2,7 +2,15 @@ body {
   background-color: rgb(29, 28, 28);
   color: #b1b1b1;
 }
-
+a {
+  text-decoration: none;
+}
+a:visited {
+  color:orange;
+}
+a:hover {
+  color:orchid;
+}
 .header  {
   list-style-type: none;
   margin: 0;
@@ -16,7 +24,6 @@ a.header:hover {
 }
 a.header, a.header:visited {
   color:hotpink;
-  text-decoration: none;
 }
 .header_box {
   background-color: indigo;
@@ -98,7 +105,6 @@ input#delete_button{
 
 }
 a#post_button {
-  text-decoration: none;
   border: 3px solid red;
   background-color: rgb(0, 43, 43);
   color: rgb(0, 194, 16);
@@ -106,7 +112,7 @@ a#post_button {
   padding: 2px;
   position: absolute;
   right: 3%;
-  top: 8%;
+  top: 9%;
 }
 div.index {
   background-color: rgb(83, 25, 25);
@@ -119,4 +125,7 @@ div.index {
   text-align: center;
   text-decoration-style: wavy;
   text-decoration-color: palevioletred;
+}
+div.post#post {
+  color:powderblue;
 }

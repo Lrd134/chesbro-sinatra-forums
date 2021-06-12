@@ -2,5 +2,12 @@
 <a href="/posts/new" id="post_button">New Post</a>
 <% end %>
 <% @posts.each do | post | %>
-<h3>Post Title: <a href="/posts/<%=post.id%>"><%=post.title%><a></h3>
+  <div  class="index post" id="post">
+    <h3>
+      Post Title<br>
+      <a href="/posts/<%=post.id%>">
+        <%=post.title%>
+      </a>
+    </h3>
+  </div>
 <% end %>
