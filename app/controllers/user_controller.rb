@@ -50,12 +50,14 @@ class UserController < ApplicationController
   patch '/users/:id' do
     user = current_user
     
-    
-    if params[:user][:username].empty?
-      params[:user][:username] = user.username
+    unless current_user.id != params[:id]
+      if params[:user][:username].empty?
+        params[:user][:username] = user.username
+      end
+      user.update(params[:user])
+      redirect :"users/#{user.id}"
     end
-    user.update(params[:user])
-    redirect :"users/#{user.id}"
+    redirect to :'/failure'
   end
   delete '/users/delete/:id' do
     if params[:bool].include?("yes")
