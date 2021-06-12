@@ -1,8 +1,5 @@
 class RepliesController < ApplicationController
 
-  # GET: /replies
-
-  # GET: /replies/new
   get "/posts/:post_id/reply" do
     @post_id = params[:post_id]
     erb :"/replies/new.html"
@@ -11,7 +8,6 @@ class RepliesController < ApplicationController
     @reply = Reply.find_by(id: params[:id])
     erb :"/replies/delete"
   end
-  # POST: /replies
   post "/reply" do
     params[:reply][:user_id] = current_user.id
     reply = Reply.create(params[:reply])
@@ -29,13 +25,11 @@ class RepliesController < ApplicationController
     erb :"/replies/show.html"
   end
 
-  # GET: /replies/5/edit
   get "/replies/:id/edit" do
     @reply = Reply.find_by(id: params[:id])
     erb :"/replies/edit.html"
   end
 
-  # PATCH: /replies/5
   patch "/replies/:id" do
     @reply = Reply.find_by(id: params[:id])
     params[:reply][:user_id] = current_user.id
@@ -44,8 +38,12 @@ class RepliesController < ApplicationController
     redirect "/posts/#{@reply.post_id}"
   end
 
-  # DELETE: /replies/5/delete
   delete "/replies/:id/delete" do
-    redirect "/replies"
+    
+    @reply = Reply.find_by(id: params[:id])
+    if params[:bool] == "yes" && current_user.id == @reply.user_id
+      @reply.destroy
+    end
+    redirect "/posts"
   end
 end
