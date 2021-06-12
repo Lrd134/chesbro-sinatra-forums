@@ -11,6 +11,7 @@
 <div class="post_box">
 <p id="show_post_content"><%=@post.content%></p>
 </div>
+<a href="/posts/<%=@post.id%>/reply">New Reply</a>
 <% if @replies %>
   <% @replies.each do | reply | %>
     <div class="reply_box">
