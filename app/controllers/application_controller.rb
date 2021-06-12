@@ -17,7 +17,9 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!current_user
     end
-
+    def username(user_id)
+      User.find_by(id: user_id).username
+    end
   end
   get '/' do
     erb :index
