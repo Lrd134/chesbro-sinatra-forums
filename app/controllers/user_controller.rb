@@ -64,12 +64,15 @@ class UserController < ApplicationController
     redirect to :'/failure/'
   end
   delete '/users/delete/:id' do
-    if params[:bool].include?("yes")
-      user = current_user
-      user.destroy
-      redirect :'/logout'
-    else
-      redirect :'/failure/you_choose_the_non_violent_path_today'
+    unless params[:id] != current_user.id
+      if params[:bool].include?("yes")
+        user = current_user
+        user.destroy
+        redirect :'/logout'
+      else
+        redirect :'/failure/you_choose_the_non_violent_path_today'
+      end
     end
+    redirect :'/failure/you_don\'t_own'
   end
 end
