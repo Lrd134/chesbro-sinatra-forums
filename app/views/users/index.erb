@@ -1,7 +1,7 @@
 <%@users.each do | user |%>
 <div class="index">
 <h3>
-Username: <%=user.username%>
+Username: <a href="/users/<%=user.id%>"><%=user.username%></a>
 </h3>
 <h3>
 Posts: <%=user.posts.count%>

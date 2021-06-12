@@ -1,6 +1,6 @@
 body {
   background-color: rgb(29, 28, 28);
-  color: #b1b1b1;
+  color: powderblue;
 }
 a {
   text-decoration: none;
@@ -123,9 +123,6 @@ div.index {
   text-align: center;
   text-decoration-style: wavy;
   text-decoration-color: palevioletred;
-}
-div.post#post {
-  color:powderblue;
 }
 div#edit_button {
   background-color: rgb(27, 0, 27);
