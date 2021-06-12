@@ -28,12 +28,17 @@ class RepliesController < ApplicationController
 
   # GET: /replies/5/edit
   get "/replies/:id/edit" do
+    @reply = Reply.find_by(id: params[:id])
     erb :"/replies/edit.html"
   end
 
   # PATCH: /replies/5
   patch "/replies/:id" do
-    redirect "/replies/:id"
+    @reply = Reply.find_by(id: params[:id])
+    params[:reply][:user_id] = current_user.id
+    params[:reply][:post_id] = @reply.post_id
+    @reply.update(params[:reply])
+    redirect "/posts/#{@reply.post_id}"
   end
 
   # DELETE: /replies/5/delete

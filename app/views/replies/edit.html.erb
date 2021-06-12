@@ -1,1 +1,6 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<form action="/replies/<%=@reply.id%>" method="POST">
+<input type="hidden" value="PATCH" name="_method"/>
+<textarea name="reply[message]"><%=@reply.message%></textarea>
+<input type="submit" value="Update Reply"/>
+</form>
+<a href="/replies/<%=@reply.id%>/delete">Delete Reply</a>
