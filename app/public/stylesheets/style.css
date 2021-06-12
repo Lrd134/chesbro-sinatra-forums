@@ -108,3 +108,15 @@ a#post_button {
   right: 3%;
   top: 8%;
 }
+div.index {
+  background-color: rgb(83, 25, 25);
+  min-width: 50%;
+  max-width: 65%;
+  max-height: 4%;
+  border: 3px solid rgba(132, 0, 255, 0.212);
+  position: relative;
+  left: 17%;
+  text-align: center;
+  text-decoration-style: wavy;
+  text-decoration-color: palevioletred;
+}

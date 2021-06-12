@@ -1,8 +1,10 @@
 <%@users.each do | user |%>
+<div class="index">
 <h3>
 Username: <%=user.username%>
 </h3>
 <h3>
 Posts: <%=user.posts.count%>
 </h3>
+</div>
 <%end%>
