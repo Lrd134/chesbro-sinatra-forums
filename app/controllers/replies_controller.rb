@@ -7,7 +7,10 @@ class RepliesController < ApplicationController
     @post_id = params[:post_id]
     erb :"/replies/new.html"
   end
+  get "/replies/<%=@reply.id%>/delete" do
 
+    erb :"/replies/delete"
+  end
   # POST: /replies
   post "/reply" do
     params[:reply][:user_id] = current_user.id
