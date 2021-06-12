@@ -39,14 +39,17 @@ class PostController < ApplicationController
   end
   patch '/posts/:id' do
     @post = Post.find(params[:id])
-    unless !params[:post][:title].empty?
-      params[:post][:title] = @post.title
+    unless current_user.id != @post.user_id
+      unless !params[:post][:title].empty?
+        params[:post][:title] = @post.title
+      end
+      unless !params[:post][:content].empty?
+        params[:post][:content] = @post.content
+      end
+      @post.update(params[:post])
+      redirect :"/posts/#{@post.id}"
     end
-    unless !params[:post][:content].empty?
-      params[:post][:content] = @post.content
-    end
-    @post.update(params[:post])
-    redirect :"/posts/#{@post.id}"
+    redirect :"/failure"
   end
 
   delete '/posts/:id' do
