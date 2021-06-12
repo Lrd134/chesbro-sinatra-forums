@@ -13,9 +13,10 @@
 </div>
 <% if @replies %>
   <% @replies.each do | reply | %>
-    <div>
-      <p class="reply reply_timestamp"><%=reply.timestamps%></p>
-      <p class="reply reply_user"><%=username.(reply.user_id)%></p>
+    <div class="reply_box">
+      <p class="reply reply_timestamp"><%=reply.created_at%></p>
+      <p class="reply reply_user"><%=username(reply.user_id)%></p>
       <p class="reply reply_message"><%=reply.message%></p>
     </div>
+  <% end %>
 <% end %>
