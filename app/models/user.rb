@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
+  has_many :replies
   has_secure_password
   validates :username, presence: { message: "%{attribute} must be given please." }, uniqueness: {
     # object = person object being validated

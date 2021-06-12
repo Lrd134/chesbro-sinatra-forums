@@ -11,7 +11,7 @@ class PostController < ApplicationController
   end
   get '/posts/:id' do
     @post = Post.find(params[:id])
-    @user = current_user
+    @replies = @post.replies
     erb :'/posts/show'
   end
   get '/posts/:id/delete' do

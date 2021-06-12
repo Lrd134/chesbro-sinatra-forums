@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :replies
   validates :title, presence: { message: "%{attribute} must be given please." }, uniqueness: {
     # object = person object being validated
     # data = { model: "Person", attribute: "Username", value: <username> }
