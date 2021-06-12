@@ -15,9 +15,7 @@ a:hover {
   list-style-type: none;
   margin: 0;
   padding: 1.3px;
-  display: flex;
-  
-  
+  display: flex;  
 }
 a.header:hover {
   background-color: rgb(114, 5, 192);
@@ -128,4 +126,15 @@ div.index {
 }
 div.post#post {
   color:powderblue;
+}
+div#edit_button {
+  background-color: rgb(27, 0, 27);
+  margin: auto;
+  width: auto;
+  padding: 2px;
+  position:absolute;
+  right: 4%;
+  top: 9%;
+  font-size: 14px;
+  text-align: center;
 }
