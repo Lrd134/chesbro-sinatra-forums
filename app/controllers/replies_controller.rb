@@ -7,8 +7,8 @@ class RepliesController < ApplicationController
     @post_id = params[:post_id]
     erb :"/replies/new.html"
   end
-  get "/replies/<%=@reply.id%>/delete" do
-
+  get "/replies/:id/delete" do
+    @reply = Reply.find_by(id: params[:id])
     erb :"/replies/delete"
   end
   # POST: /replies
