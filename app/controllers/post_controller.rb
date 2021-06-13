@@ -42,7 +42,7 @@ class PostController < ApplicationController
   patch '/forums/:slug/:id' do
     @cat = Category.find_by_slug(params[:slug])
     @post = Post.find(params[:id])
-    unless current_user.id != @post.user_id
+    unless current_user.id != @post.user_id || !@cat.posts.include?(@post)
       unless !params[:post][:title].empty?
         params[:post][:title] = @post.title
       end

@@ -11,6 +11,7 @@
   <li class="header"><a class="header" href="/posts">Posts</a></li>-->
 
   <% if logged_in? %>
+    <li class="header"><a class="header" href="/forums">Forums</a></li>
     <li class="header"><a class="header" href="/users/<%=session[:user_id]%>">Home Page</a></li>
     <li class="header"><a class="header" href="/logout">Logout</a></li>
   <% else %>
