@@ -8,12 +8,14 @@ class RepliesController < ApplicationController
     end
   end
   get "/forums/:slug/:post_id/replies/:id/delete" do
+    @cat = Category.find_by_slug(params[:slug])
+    @post = Post.find_by(id: params[:post_id])
     @reply = Reply.find_by(id: params[:id])
     if current_user.id == @reply.user_id
       erb :"/replies/delete"
     end
   end
-  post "/reply" do
+  post "/forums/:slug/:post_id/reply" do
     params[:reply][:user_id] = current_user.id
     reply = Reply.create(params[:reply])
     
@@ -26,19 +28,22 @@ class RepliesController < ApplicationController
 
   # GET: /replies/5
   get "/forums/:slug/:post_id/replies/:id" do
+    @cat = Category.find_by_slug(params[:slug])
+    @post = Post.find_by(id: params[:post_id])
     @reply = Reply.find_by(id: params[:id])
     erb :"/replies/show.html"
   end
 
   get "/forums/:slug/:post_id/replies/:id/edit" do
-    
+    @cat = Category.find_by_slug(params[:slug])
+    @post = Post.find_by(id: params[:post_id])
     @reply = Reply.find_by(id: params[:id])
     if current_user.id == @reply.user_id      
       erb :"/replies/edit.html"
     end
   end
 
-  patch "/replies/:id" do
+  patch "/forums/:slug/:post_id/replies/:id" do
     @reply = Reply.find_by(id: params[:id])
     params[:reply][:user_id] = current_user.id
     params[:reply][:post_id] = @reply.post_id
@@ -46,7 +51,7 @@ class RepliesController < ApplicationController
     redirect "/posts/#{@reply.post_id}"
   end
 
-  delete "/replies/:id/delete" do
+  delete "/forums/:slug/:post_id/replies/:id/delete" do
     
     @reply = Reply.find_by(id: params[:id])
     if params[:bool] == "yes" && current_user.id == @reply.user_id
