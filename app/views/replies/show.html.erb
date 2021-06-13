@@ -1,4 +1,4 @@
 <%=@reply.message%>
 <% if logged_in? && current_user.id == @reply.user_id%>
-  <a href="/replies/<%=@reply.id%>/edit">Edit Reply</a>
+  <a href="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>/edit">Edit Reply</a>
 <% end %>

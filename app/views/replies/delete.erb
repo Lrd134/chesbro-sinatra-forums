@@ -4,7 +4,7 @@
 
 <h4>You would like to <em id="delete_msg">delete</em></h4>
 
-<form action="/replies/<%=@reply.id%>/delete" method="POST">
+<form action="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>/delete" method="POST">
 <input type="hidden" value="DELETE" name="_method"/>
 <label for="bool">Please Enter "yes" to <em id="delete_msg">delete</em></label><br>
 <input class="credentials" type="text" placeholder="yes" value="no" id="bool" name="bool" required/><br>

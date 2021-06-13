@@ -1,6 +1,6 @@
-<form action="/replies/<%=@reply.id%>" method="POST">
+<form action="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>" method="POST">
 <input type="hidden" value="PATCH" name="_method"/>
 <textarea name="reply[message]"><%=@reply.message%></textarea>
 <input type="submit" value="Update Reply"/>
 </form>
-<a href="/replies/<%=@reply.id%>/delete">Delete Reply</a>
+<a href="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>/delete">Delete Reply</a>

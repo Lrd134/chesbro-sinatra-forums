@@ -1,10 +1,13 @@
 class RepliesController < ApplicationController
 
   get "/forums/:slug/:post_id/reply" do
-    @post_id = params[:post_id]
-    erb :"/replies/new.html"
+    @post = Post.find_by(id: params[:post_id])
+    @cat = Category.find_by_slug(params[:slug])
+    if @cat.posts.include?(@post)
+      erb :"/replies/new.html"
+    end
   end
-  get "/replies/:id/delete" do
+  get "/forums/:slug/:post_id/replies/:id/delete" do
     @reply = Reply.find_by(id: params[:id])
     if current_user.id == @reply.user_id
       erb :"/replies/delete"
@@ -22,12 +25,12 @@ class RepliesController < ApplicationController
   end
 
   # GET: /replies/5
-  get "/replies/:id" do
+  get "/forums/:slug/:post_id/replies/:id" do
     @reply = Reply.find_by(id: params[:id])
     erb :"/replies/show.html"
   end
 
-  get "/replies/:id/edit" do
+  get "/forums/:slug/:post_id/replies/:id/edit" do
     
     @reply = Reply.find_by(id: params[:id])
     if current_user.id == @reply.user_id      
