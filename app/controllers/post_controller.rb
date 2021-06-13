@@ -16,7 +16,9 @@ class PostController < ApplicationController
   end
   get '/posts/:id/delete' do
     @post = Post.find(params[:id])
-    erb :'/posts/delete'
+    if @post.user_id == current_user.id
+      erb :'/posts/delete'
+    end
   end
   get '/posts/:id/edit' do
     

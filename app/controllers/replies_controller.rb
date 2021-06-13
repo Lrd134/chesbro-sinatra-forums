@@ -6,7 +6,9 @@ class RepliesController < ApplicationController
   end
   get "/replies/:id/delete" do
     @reply = Reply.find_by(id: params[:id])
-    erb :"/replies/delete"
+    if current_user.id == @reply.user_id
+      erb :"/replies/delete"
+    end
   end
   post "/reply" do
     params[:reply][:user_id] = current_user.id
@@ -26,8 +28,11 @@ class RepliesController < ApplicationController
   end
 
   get "/replies/:id/edit" do
+    
     @reply = Reply.find_by(id: params[:id])
-    erb :"/replies/edit.html"
+    if current_user.id == @reply.user_id      
+      erb :"/replies/edit.html"
+    end
   end
 
   patch "/replies/:id" do
