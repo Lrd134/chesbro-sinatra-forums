@@ -1,12 +1,12 @@
 class PostController < ApplicationController
 
-
-  get '/forums/:slug/posts/new' do
+ 
+  get '/forums/:slug/new' do
     @user = current_user
     
     erb :'/posts/new'
   end
-  get '/forums/:slug/posts/:id' do
+  get '/forums/:slug/:id' do
     @cat = Category.find_by_slug(params[:slug])
     @post = Post.find(params[:id])
     if @cat.posts.include?(@post) && logged_in?
@@ -14,13 +14,13 @@ class PostController < ApplicationController
       erb :'/posts/show'
     end
   end
-  get '/forums/:slug/posts/:id/delete' do
+  get '/forums/:slug/:id/delete' do
     @post = Post.find(params[:id])
     if @post.user_id == current_user.id
       erb :'/posts/delete'
     end
   end
-  get '/forums/:slug/posts/:id/edit' do
+  get '/forums/:slug/:id/edit' do
     
     @post = Post.find(params[:id])
     

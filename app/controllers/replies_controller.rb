@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
 
-  get "/posts/:post_id/reply" do
+  get "/forums/:slug/:post_id/reply" do
     @post_id = params[:post_id]
     erb :"/replies/new.html"
   end
