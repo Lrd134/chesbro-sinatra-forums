@@ -17,7 +17,8 @@ class CategoriesController < ApplicationController
   end
 
   # GET: /categories/5
-  get "/categories/:id" do
+  get "/forums/:slug" do
+    @cat = Category.find_by_slug(params[:slug])
     erb :"/categories/show.html"
   end
 

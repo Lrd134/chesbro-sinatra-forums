@@ -1,1 +1,6 @@
-<h1>This is the Model's index page.</h1>
+<% @cats.each do |category| %>
+  <div class="cat_box">
+    <p><a href="/forums/<%=category.slug%>"><%=category.name%></a></p>
+    <p><%=category.posts.count%></p>
+  </div>
+<% end %>
