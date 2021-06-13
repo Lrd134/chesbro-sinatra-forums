@@ -18,10 +18,13 @@ class CategoriesController < ApplicationController
 
   # GET: /categories/5
   get "/forums/:slug" do
-    @cat = Category.find_by_slug(params[:slug])
-    erb :"/categories/show.html"
+    if logged_in?
+      @cat = Category.find_by_slug(params[:slug])
+      erb :"/categories/show.html"
+    else
+      redirect to :'/failure/please_login'
+    end
   end
-
   # GET: /categories/5/edit
   get "/categories/:id/edit" do
     erb :"/categories/edit.html"
