@@ -6,11 +6,6 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'app/public'
   end
   helpers do
-
-    def self.authenticate(username:, password:)
-      @user = User.find_by_username(username)
-      @user && @user.authenticate(password) ? @user : nil
-    end
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
     end
@@ -22,14 +17,12 @@ class ApplicationController < Sinatra::Base
     end
   end
   get '/' do
-    erb :index
+    @users = User.all
+    erb :'/users/index'
   end
+
   get '/failure/:failure_params' do
     @failure_reason = params[:failure_params].split("_").map {|r| r.capitalize}.join(" ")
     erb :failure
   end
-
-
-  
-  
 end
