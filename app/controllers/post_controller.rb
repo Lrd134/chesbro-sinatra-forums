@@ -1,9 +1,6 @@
 class PostController < ApplicationController
 
-  get '/posts' do
-    @posts = Post.all
-    erb :'/posts/index'
-  end
+
   get '/posts/new' do
     @user = current_user
     

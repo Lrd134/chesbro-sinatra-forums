@@ -10,10 +10,6 @@ class UserController < ApplicationController
     session.clear
     redirect :'/'
   end
-  get '/users' do
-    @users = User.all
-    erb :'/users/index'
-  end
   get '/delete' do
     @user = current_user
     erb :'users/delete'
