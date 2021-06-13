@@ -2,6 +2,7 @@ class PostController < ApplicationController
 
  
   get '/forums/:slug/new' do
+    @cat = Category.find_by_slug(params[:slug])
     @user = current_user
     
     erb :'/posts/new'
@@ -15,21 +16,22 @@ class PostController < ApplicationController
     end
   end
   get '/forums/:slug/:id/delete' do
+    @cat = Category.find_by_slug(params[:slug])
     @post = Post.find(params[:id])
-    if @post.user_id == current_user.id
+    if @post.user_id == current_user.id && @cat.posts.include?(@post)
       erb :'/posts/delete'
     end
   end
   get '/forums/:slug/:id/edit' do
-    
+    @cat = Category.find_by_slug(params[:slug])
     @post = Post.find(params[:id])
     
-    if logged_in? && current_user.id == @post.user_id
+    if current_user.id == @post.user_id && @cat.posts.include?(@post)
       @user = current_user
       erb :'/posts/edit'
     end
   end
-  post '/forums/:slug/posts' do
+  post '/forums/:slug' do
       params[:post][:user_id] = current_user.id
       @post = Post.create(params[:post])
       if @post
@@ -38,7 +40,7 @@ class PostController < ApplicationController
         redirect :'/posts/new'
       end
   end
-  patch '/forums/:slug/posts/:id' do
+  patch '/forums/:slug/:id' do
     @post = Post.find(params[:id])
     unless current_user.id != @post.user_id
       unless !params[:post][:title].empty?
@@ -53,7 +55,7 @@ class PostController < ApplicationController
     redirect :"/failure"
   end
 
-  delete '/forums/:slug/posts/:id' do
+  delete '/forums/:slug/:id' do
     @post = Post.find(params[:id])
     unless current_user.id != @post.user_id
       if params[:bool].include?("yes")

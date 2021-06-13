@@ -1,5 +1,5 @@
 <div class="post_box">
-<form action="/posts/<%=@post.id%>" method="POST">
+<form action="/forums/<%=@cat.slug%>/<%=@post.id%>" method="POST">
 <input type="hidden" name="_method" value="PATCH"/>
 <textarea class="post" id="title" name="post[title]"  rows=1 cols=50 required>
 <%=@post.title%>
@@ -10,7 +10,7 @@
 
 </form>
 
-<form action="/posts/<%=@post.id%>/delete" method="POST">
+<form action="/forums/<%=@cat.slug%>/<%=@post.id%>/delete" method="POST">
 <input type="hidden" name="_method" value="GET"/>
 <input type="submit" value="Delete Post"/>
 </form>

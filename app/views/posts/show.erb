@@ -3,7 +3,7 @@
 </head>
 <% if current_user.id == @post.user_id %>
 <div id="edit_button">
-<a href="/posts/<%=@post.id%>/edit">Edit Post</a>
+<a href="/forums/<%=@cat.slug%>/<%=@post.id%>/edit">Edit Post</a>
 </div>
 </form>
 <% end %>

@@ -3,7 +3,7 @@
 </head>
 <% if logged_in? %>
 <div class="post_box">
-<form action="/posts" method="POST">
+<form action="/forums/<%=@cat.slug%>" method="POST">
 <textarea class="post" id="title" name="post[title]" placeholder="Title" rows=1 cols=50 required>
 </textarea><br>
 <textarea class="post" placeholder="Post Content" id="content" name="post[content]" rows=10 cols=100 required>
