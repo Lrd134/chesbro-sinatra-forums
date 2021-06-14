@@ -8,9 +8,6 @@ div.profile {
 
 }
 input#edit_button {
-  position: relative;
-  left: 80%;
-
   margin-bottom: 25px;
 }
 p.profile {
@@ -21,5 +18,10 @@ p.profile {
 h1.profile{
   text-align: center;
   color:crimson;
+
+}
+span.edit_span {
+  float: right;
+  padding-right: 20px;
 
 }
