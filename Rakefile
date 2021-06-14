@@ -4,5 +4,6 @@ task default: [:start]
 
 task :start do
   "Starting the project!"
-
+  rake db:migrate
+  rake db:seed
 end
