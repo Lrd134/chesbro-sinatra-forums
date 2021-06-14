@@ -1,5 +1,6 @@
 <% @cats.each do |category| %>
   <div class="cat_box">
     <p><a href="/forums/<%=category.slug%>"><%=category.name%></a><span class="right_align">Total Posts: <%=category.posts.count%></span></p>
+    <p>Last Update: <%=category.posts.maximum(:updated_at).ctime%><span class="right_align">Update by: <%=username(category.posts.order(:updated_at)[0].user_id)%></span></p>
   </div>
 <% end %>
