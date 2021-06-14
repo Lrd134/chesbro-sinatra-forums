@@ -1,6 +1,5 @@
 <% @cats.each do |category| %>
   <div class="cat_box">
-    <p><a href="/forums/<%=category.slug%>"><%=category.name%></a></p>
-    <p><%=category.posts.count%></p>
+    <p><a href="/forums/<%=category.slug%>"><%=category.name%></a><span class="right_align">Total Posts: <%=category.posts.count%></span></p>
   </div>
 <% end %>
