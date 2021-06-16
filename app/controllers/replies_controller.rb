@@ -55,7 +55,6 @@ class RepliesController < ApplicationController
     params[:reply][:post_id] = @reply.post_id
     valid = @cat.posts.include?(@post)
     if valid
-      binding.pry
       @reply.update(params[:reply])
       redirect :"/forums/#{@cat.slug}/#{@reply.post_id}"
     else
