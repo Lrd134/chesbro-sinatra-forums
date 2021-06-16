@@ -53,10 +53,11 @@ class RepliesController < ApplicationController
     @reply = Reply.find_by(id: params[:id])
     params[:reply][:user_id] = current_user.id
     params[:reply][:post_id] = @reply.post_id
-    
-    if @cat.posts.include?(@post)
+    valid = @cat.posts.include?(@post)
+    if valid
+      binding.pry
       @reply.update(params[:reply])
-      redirect :"/forums/#{@cat.slug}/#{reply.post_id}"
+      redirect :"/forums/#{@cat.slug}/#{@reply.post_id}"
     else
       redirect :"/failure/unknown"
     end
