@@ -20,7 +20,7 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = current_user
-    current_user.id == params[:id] ? redirect(:'/failure/please_login') : erb(:'/users/edit')
+    current_user.id == params[:id].to_i ? redirect(:'/failure/please_login') : erb(:'/users/edit')
   end
   post '/users' do
     @user = User.create(params[:user])
@@ -28,9 +28,9 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
     elsif @user.errors[:username].empty?
-      redirect :'/failure'
+      redirect :'/failure/username_cant_be_empty'
     else
-      redirect :'/failure'
+      redirect :'/failure/not_you'
     end
 
   end
@@ -50,7 +50,7 @@ class UserController < ApplicationController
   patch '/users/:id' do
     user = current_user
     
-    unless current_user.id != params[:id]
+    unless user.id != params[:id].to_i
       if params[:user][:username].empty?
         params[:user][:username] = user.username
       end
@@ -60,7 +60,7 @@ class UserController < ApplicationController
     redirect to :'/failure/'
   end
   delete '/users/delete/:id' do
-    unless params[:id] != current_user.id
+    unless params[:id].to_i != current_user.id
       if params[:bool].include?("yes")
         user = current_user
         user.destroy
