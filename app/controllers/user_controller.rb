@@ -20,7 +20,7 @@ class UserController < ApplicationController
   end
   get '/users/:id/edit' do
     @user = current_user
-    current_user.id == params[:id].to_i ? redirect(:'/failure/please_login') : erb(:'/users/edit')
+    current_user.id == params[:id].to_i ? erb(:'/users/edit') : redirect(:'/failure/please_login')
   end
   post '/users' do
     @user = User.create(params[:user])
@@ -51,12 +51,14 @@ class UserController < ApplicationController
     user = current_user
     
     unless user.id != params[:id].to_i
+      
       if params[:user][:username].empty?
         params[:user][:username] = user.username
       end
       user.update(params[:user])
       redirect :"users/#{user.id}"
     end
+    
     redirect to :'/failure/'
   end
   delete '/users/delete/:id' do
