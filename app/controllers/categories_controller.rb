@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
   # GET: /categories
   get "/forums" do
     @cats = Category.all
-    erb :"/categories/index.html"
+    erb :"/categories/index"
   end
 
   # GET: /categories/new
   get "/categories/new" do
-    erb :"/categories/new.html"
+    erb :"/categories/new"
   end
 
   # POST: /categories
@@ -20,14 +20,14 @@ class CategoriesController < ApplicationController
   get "/forums/:slug" do
     if logged_in?
       @cat = Category.find_by_slug(params[:slug])
-      erb :"/categories/show.html"
+      erb :"/categories/show"
     else
       redirect to :'/failure/please_login'
     end
   end
   # GET: /categories/5/edit
   get "/categories/:id/edit" do
-    erb :"/categories/edit.html"
+    erb :"/categories/edit"
   end
 
   # PATCH: /categories/5
