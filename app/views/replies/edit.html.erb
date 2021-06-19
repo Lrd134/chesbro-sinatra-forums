@@ -3,7 +3,7 @@
   <form action="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>" method="POST">
     
     <input type="hidden" value="PATCH" name="_method"/>
-    <textarea class="post" id="content" cols="60" rows="20" name="reply[message]"><%=@reply.message%></textarea><br>
+    <textarea class="post content"  cols="60" rows="20" name="reply[message]"><%=@reply.message%></textarea><br>
     <input class="submit_text" type="submit" value="Update Reply"/>
   </form>
   <div class="del_reply" id="delete_reply">

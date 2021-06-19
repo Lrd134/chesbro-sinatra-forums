@@ -1,10 +1,10 @@
 <div class="post_box">
 <form action="/forums/<%=@cat.slug%>/<%=@post.id%>" method="POST">
 <input type="hidden" name="_method" value="PATCH"/>
-<textarea class="submit_text" id="title" name="post[title]"  rows=1 cols=50 required>
+<textarea id="title" name="post[title]"  rows=1 cols=50 required>
 <%=@post.title%>
 </textarea><br>
-<textarea class="submit_text" id="content" name="post[content]" rows=10 cols=100 required>
+<textarea class="content"  name="post[content]" rows=10 cols=100 required>
 <%=@post.content%></textarea><br>
 <input class="submit_text" type="submit" value="Update Post"/>
 
