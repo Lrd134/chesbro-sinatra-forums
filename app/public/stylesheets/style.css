@@ -203,6 +203,7 @@ p.reply.reply_message {
   border: 2px solid red;
   background-color: darkslategray;
   color:rgba(209, 199, 107, 0.848);
+  text-align: center;
 
 }
 a#new_reply {
