@@ -205,3 +205,9 @@ p.reply.reply_message {
   color:rgba(209, 199, 107, 0.848);
 
 }
+a#new_reply {
+  float: right;
+  border: 2px solid blue;
+  background-color: rgb(31, 7, 7);
+  padding: 3px;
+}
