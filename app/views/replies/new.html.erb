@@ -1,7 +1,8 @@
 <div class="reply">
 <h4 style="margin-bottom: 2px;">Replying to: <%=@post.title%></h4>
 <form action="/forums/<%=@cat.slug%>/<%=@post.id%>/reply" method="POST">
-<textarea class="post content" name="reply[message]"></textarea><br>
-<input type="submit" value="Create Reply"/>
+<textarea class="post content" cols="60" rows="20" name="reply[message]"></textarea><br><br>
+<input class="submit_text" type="submit" value="Create Reply" style="float: right;"/>
+<br>
 </form>
 </div>
