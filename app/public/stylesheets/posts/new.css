@@ -1,8 +1,0 @@
-input#post_submit {
-  border-radius: 5px;
-  margin: 3px;
-  background-color: rgb(174, 150, 212);
-}
-input#post_submit:hover {
-  background-color: rgba(174, 150, 212, 0.848);
-}

@@ -1,6 +1,13 @@
-<form action="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>" method="POST">
-<input type="hidden" value="PATCH" name="_method"/>
-<textarea name="reply[message]"><%=@reply.message%></textarea>
-<input type="submit" value="Update Reply"/>
-</form>
-<a href="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>/delete">Delete Reply</a>
+<div class="reply">
+  <h3 style="margin-bottom: 2px;"> Replying to: <%=@post.title%> </h3>
+  <form action="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>" method="POST">
+    
+    <input type="hidden" value="PATCH" name="_method"/>
+    <textarea class="post" id="content" cols="60" rows="20" name="reply[message]"><%=@reply.message%></textarea><br>
+    <input class="submit_text" type="submit" value="Update Reply"/>
+  </form>
+  <div class="del_reply" id="delete_reply">
+    <a href="/forums/<%=@cat.slug%>/<%=@post.id%>/replies/<%=@reply.id%>/delete">Delete Reply</a>
+  </div>
+  <br>
+</div>
