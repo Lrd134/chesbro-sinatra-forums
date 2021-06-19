@@ -203,7 +203,6 @@ p.reply.reply_message {
   border: 2px solid red;
   background-color: darkslategray;
   color:rgba(209, 199, 107, 0.848);
-  text-align: center;
 
 }
 a#new_reply {
@@ -211,4 +210,11 @@ a#new_reply {
   border: 2px solid blue;
   background-color: rgb(31, 7, 7);
   padding: 3px;
+}
+div#cat_box{
+  border: 4px dotted lightcoral;
+}
+h1#forum_cats {
+  color: rgb(21, 39, 34);
+  text-align: center;
 }
