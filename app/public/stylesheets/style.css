@@ -176,3 +176,12 @@ input.submit_text {
 input.submit:hover {
   background-color: rgba(174, 150, 212, 0.848);
 }
+div.reply_box {
+  border: 2px solid yellow;
+}
+
+div.reply, div.show_reply {
+  border: 2px solid greenyellow;
+  margin: 2px;
+  width: inherit;
+}
