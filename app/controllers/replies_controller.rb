@@ -68,7 +68,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find_by(id: params[:id])
     if params[:bool] == "yes" && current_user.id == @reply.user_id && @cat.posts.include?(@post)
       @reply.destroy
-      redirect :"/forums"
+      redirect :"/forums/#{@cat.slug}/#{@post.id}"
     else
       redirect :"/forums/#{@cat.slug}/#{@post.id}/replies/#{@reply.id}/edit"
     end
