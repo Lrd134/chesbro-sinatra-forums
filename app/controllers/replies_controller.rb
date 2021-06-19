@@ -70,7 +70,7 @@ class RepliesController < ApplicationController
       @reply.destroy
       redirect :"/forums"
     else
-      redirect :"/forums/#{@cat.slug}/#{@post.id}"
+      redirect :"/forums/#{@cat.slug}/#{@post.id}/replies/#{@reply.id}/edit"
     end
     
   end

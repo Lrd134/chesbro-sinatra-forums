@@ -168,7 +168,7 @@ div.del_reply, div#delete_reply {
   padding: 7px;
   max-height: 18px;
 }
-input.submit {
+input.submit_text {
   border-radius: 5px;
   margin: 3px;
   background-color: rgb(174, 150, 212);
