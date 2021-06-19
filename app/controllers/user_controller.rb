@@ -68,7 +68,7 @@ class UserController < ApplicationController
         user.destroy
         redirect :'/logout'
       else
-        redirect :'/failure/you_choose_the_non_violent_path_today'
+        redirect :"/users/#{current_user.id}"
       end
     end
     redirect :'/failure/you_don\'t_own'
