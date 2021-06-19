@@ -218,3 +218,10 @@ h1#forum_cats {
   color: rgb(21, 39, 34);
   text-align: center;
 }
+div.edit_box a {
+  border: 2px solid purple;
+  background-color: palegreen;
+}
+a.edit {
+  float: right;
+}
