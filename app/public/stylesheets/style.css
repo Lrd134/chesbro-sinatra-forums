@@ -185,3 +185,23 @@ div.reply, div.show_reply {
   margin: 2px;
   width: inherit;
 }
+p.reply_timestamp {
+  float: left;
+}
+p.reply_user {
+  float: right;
+}
+p.reply.reply_message {
+  width: inherit;
+  max-width: 50%;
+  text-align: center;
+  margin: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 2px solid red;
+  background-color: darkslategray;
+  color:rgba(209, 199, 107, 0.848);
+
+}
